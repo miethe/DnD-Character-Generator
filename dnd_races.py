@@ -4,7 +4,9 @@ import time
 import argparse
 import csv
 
-from generator import RNNLayerGenerator
+from dice_roller import Dice_Roller
+
+#from generator import RNNLayerGenerator
 
 RACE = 0
 SUBRACE = 1
@@ -31,24 +33,51 @@ class Race(object):
         self.language = 'Common'
         self.race_info = 'None'
 
-    def add_subrace(self, subrace, strength, dex, con, intel, wis, cha, info, size, speed, language, source):
-        self.subraces.append(Subrace(subrace, strength, dex, con, intel, wis, cha, info, size, speed, language, source))
+    def add_subrace(self, subrace, stats, info, size, speed, language, source):
+        self.subraces.append(Subrace(subrace, stats, info, size, speed, language, source))
+
+    def get_stats(self, subrace = None):
+        if not subrace:
+            subrace = self.subraces[0]
+        return subrace.get_stats()
 
 class Subrace(object):
 
-    def __init__(self, subrace, strength, dex, con, intel, wis, cha, info, size, speed, language, source):
+    def __init__(self, subrace, stats, info, size, speed, language, source):
         self.subrace_name = subrace
-        self.strength = strength
-        self.dexterity = dex
-        self.constitution = con
-        self.intelligence = intel
-        self.wisdom = wis
-        self.charisma = cha
+        self.stats = {}
+        self.stats['strength'] = stats[0]
+        self.stats['dexterity'] = stats[1]
+        self.stats['constitution'] = stats[2]
+        self.stats['intelligence'] = stats[3]
+        self.stats['wisdom'] = stats[4]
+        self.stats['charisma'] = stats[5]
         self.race_info = info
         self.size = size
         self.speed = speed
         self.language = language
         self.source = source
+
+    def get_stats(self):
+        return [self.stats]
+
+    def strength(self):
+        self.stats['strength']
+
+    def dexterity(self):
+        self.stats['dexterity']
+
+    def constitution(self):
+        self.stats['constitution']
+
+    def intelligence(self):
+        self.stats['intelligence']
+
+    def wisdom(self):
+        self.stats['wisdom']
+
+    def charisma(self):
+        self.stats['charisma']
 
 def parse_csv(desired_race=None, sub_race = '(none)', return_subraces = False):
     first_row = True
@@ -59,36 +88,46 @@ def parse_csv(desired_race=None, sub_race = '(none)', return_subraces = False):
     with open(filepath, 'r') as racefile:
         file_lines = csv.reader(racefile, delimiter=',')
         for row in file_lines:
-            if important_info['first_row']:
-                important_info['first_row'] = False
-                continue
-            race_name = row[RACE]
-            if race_name not in races:
-                races[race_name] = Race(race_name)
-            if 'choose one' in row[SUBRACE].lower():
-                continue
-            race = races[race_name]
-            create_new_subrace(row, race)
-    
-    for race in races:
-        for subrace in races[race].subraces:
-            print (race+': '+subrace.subrace_name)
+            process_row(row, races, important_info)
+
+    return races
+
+def process_row(row, races, important_info):
+    if important_info['first_row']:
+        important_info['first_row'] = False
+        return
+    race_name = row[RACE]
+    if race_name not in races:
+        races[race_name] = Race(race_name)
+    if 'choose one' in row[SUBRACE].lower():
+        return
+    race = races[race_name]
+    create_new_subrace(row, race)
+    return
+
+def get_stats(row):
+    index = STR
+    stats = []
+
+    while index <=CHA:
+        if not row[index] or row[index] is '_':
+            stats.append(0)
+        else:
+            stats.append(int(row[index]))
+        index += 1
+    return stats
 
 def create_new_subrace(row, race):
     subrace = row[SUBRACE]
     size = row[SIZE]
     speed = row[SPEED]
     lang = row[LANGUAGE]
-    strength = row[STR]
-    con = row[CON]
-    dex = row[DEX]
-    intel = row[INT]
-    wis = row[WIS]
-    cha = row[CHA]
     info = row[EX_INFO]
     source = row[SOURCE]
+
+    stats = get_stats(row)
     
-    race.add_subrace(subrace, strength, dex, con, intel, wis, cha, info, size, speed, lang, source)
+    race.add_subrace(subrace, stats, info, size, speed, lang, source)
 
 def skip_if_filtered(row, important_info):
     if important_info['first_row']:
@@ -112,31 +151,19 @@ def skip_if_filtered(row, important_info):
         return True
     return False
 
-def print_desired_info(row):
-    name = generate(row[RACE])
-    return (name +' - ' +row[RACE] + ': ' +row[SUBRACE]+ ' '+get_stats(row))
-
-def get_stats(row):
-    stats = ''
-    statcount = 7
-    while statcount <=12:
-        if row[statcount] is '' or row[statcount] is '_':
-            stat = '0'
-        else:
-            stat = row[statcount]
-        stats = stats + ' ' + stat
-        statcount+=1
-    
-    return stats
-
-def generate(race='', number=1, gender=''):
+""" def generate(race='', number=1, gender=''):
     mpath = './models/rnn_layer_epoch_250.pt'
-
+    return
     dnd = RNNLayerGenerator(model_path=mpath)
     tuples = dnd.generate(number, race.lower(), gender)
 
     for name_tuple in tuples:
-        return (name_tuple[0] + ': ' +name_tuple[2])
+        return (name_tuple[0] + ': ' +name_tuple[2]) """
 
 if __name__ == '__main__':
-    parse_csv()
+    #generate()
+    races = parse_csv()
+    rolls = Dice_Roller().roll_ndx_y_times_drop_lowest(4, 6, 7)
+    stats = races['Aasimar'].get_stats()
+    print(stats)
+    print(rolls)
