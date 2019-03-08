@@ -24,42 +24,19 @@ SOURCE = 14
 
 class Race(object):
 
-    def __init__(self, race_name):
+    def __init__(self, race_name, stats = {}, info = 'None', size = 0, speed = 30, language = 'Common', source = 'PHB'):
         self.race_name = race_name
         self.subraces = []
-        self.race_name = []
-        self.size = 0
-        self.speed = 30
-        self.language = 'Common'
-        self.race_info = 'None'
-
-    def add_subrace(self, subrace, stats, info, size, speed, language, source):
-        self.subraces.append(Subrace(subrace, stats, info, size, speed, language, source))
-
-    def get_stats(self, subrace = None):
-        if not subrace:
-            subrace = self.subraces[0]
-        return subrace.get_stats()
-
-class Subrace(object):
-
-    def __init__(self, subrace, stats, info, size, speed, language, source):
-        self.subrace_name = subrace
-        self.stats = {}
-        self.stats['strength'] = stats[0]
-        self.stats['dexterity'] = stats[1]
-        self.stats['constitution'] = stats[2]
-        self.stats['intelligence'] = stats[3]
-        self.stats['wisdom'] = stats[4]
-        self.stats['charisma'] = stats[5]
-        self.race_info = info
+        self.stats = stats
+        if stats:
+            self.set_stats(stats, False)
+        else:
+            self.set_stats(stats)
         self.size = size
         self.speed = speed
         self.language = language
+        self.race_info = info
         self.source = source
-
-    def get_stats(self):
-        return [self.stats]
 
     def strength(self):
         self.stats['strength']
@@ -78,6 +55,33 @@ class Subrace(object):
 
     def charisma(self):
         self.stats['charisma']
+
+    def add_subrace(self, subrace, stats, info, size, speed, language, source):
+        self.subraces.append(Subrace(subrace, stats, info, size, speed, language, source))
+
+    def get_stats(self, subrace = None):
+        if not subrace:
+            subrace = self.subraces[0]
+        return subrace.get_stats()
+
+    def set_stats(self, stats, list = True):
+        if list:
+            self.stats['strength'] = stats[0]
+            self.stats['dexterity'] = stats[1]
+            self.stats['constitution'] = stats[2]
+            self.stats['intelligence'] = stats[3]
+            self.stats['wisdom'] = stats[4]
+            self.stats['charisma'] = stats[5]
+        else:
+            self.stats = stats
+
+class Subrace(Race):
+
+    def __init__(self, subrace_name, stats, info, size, speed, language, source):
+        Race.__init__(self, subrace_name, stats, info, size, speed, language, source)        
+
+    def get_stats(self):
+        return [self.stats]
 
 def parse_csv(desired_race=None, sub_race = '(none)', return_subraces = False):
     first_row = True
