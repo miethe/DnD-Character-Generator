@@ -65,7 +65,7 @@ class Race(object):
         return subrace.get_stats()
 
     def set_stats(self, stats, list = True):
-        if list:
+        if list and stats:
             self.stats['strength'] = stats[0]
             self.stats['dexterity'] = stats[1]
             self.stats['constitution'] = stats[2]
@@ -163,11 +163,37 @@ def skip_if_filtered(row, important_info):
 
     for name_tuple in tuples:
         return (name_tuple[0] + ': ' +name_tuple[2]) """
+        
+def parse_chosen_stats(in_stats, stats, rolled):
+    index = 0
+    in_stat_list = in_stats.split(',')
+    
+    while stats[index] is not 0:
+        if in_stat_list[index].lower() == 'str':
+            rolled[0] += stats[index]
+        elif in_stat_list[index].lower() == 'dex':
+            rolled[1] += stats[index]
+        elif in_stat_list[index].lower() == 'con':
+            rolled[2] += stats[index]
+        elif in_stat_list[index].lower() == 'int':
+            rolled[3] += stats[index]
+        elif in_stat_list[index].lower() == 'wis':
+            rolled[4] += stats[index]
+        elif in_stat_list[index].lower() == 'cha':
+            rolled[5] += stats[index]
+        index+=1
+    return rolled
+            
 
 if __name__ == '__main__':
     #generate()
     races = parse_csv()
     rolls = Dice_Roller().roll_ndx_y_times_drop_lowest(4, 6, 7)
-    stats = races['Aasimar'].get_stats()
+    stats = races['Aasimar'].subraces[0].get_stats()[0]
+    stats.sort(reverse=True)
     print(stats)
     print(rolls)
+    in_stats = input('Enter your chosen 3 letter increased stats, comma delimited.')
+    rolls = parse_chosen_stats(in_stats, stats, rolls)
+    print (rolls)
+    
