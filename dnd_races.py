@@ -21,6 +21,7 @@ WIS = 11
 CHA = 12
 EX_INFO = 13
 SOURCE = 14
+STAT_NAMES = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha']
 
 class Race(object):
 
@@ -164,36 +165,50 @@ def skip_if_filtered(row, important_info):
     for name_tuple in tuples:
         return (name_tuple[0] + ': ' +name_tuple[2]) """
         
-def parse_chosen_stats(in_stats, stats, rolled):
+def parse_chosen_stats(in_stats, race_stats, rolled):
     index = 0
     in_stat_list = in_stats.split(',')
     
-    while stats[index] is not 0:
+    while race_stats[index] is not 0:
         if in_stat_list[index].lower() == 'str':
-            rolled[0] += stats[index]
+            rolled[0] += race_stats[index]
         elif in_stat_list[index].lower() == 'dex':
-            rolled[1] += stats[index]
+            rolled[1] += race_stats[index]
         elif in_stat_list[index].lower() == 'con':
-            rolled[2] += stats[index]
+            rolled[2] += race_stats[index]
         elif in_stat_list[index].lower() == 'int':
-            rolled[3] += stats[index]
+            rolled[3] += race_stats[index]
         elif in_stat_list[index].lower() == 'wis':
-            rolled[4] += stats[index]
+            rolled[4] += race_stats[index]
         elif in_stat_list[index].lower() == 'cha':
-            rolled[5] += stats[index]
+            rolled[5] += race_stats[index]
         index+=1
     return rolled
             
+def add_rolled_to_race_stats(rolled, race_stats):
+    in_stats = input('Enter your chosen 3 letter increased stats, comma delimited.')
+    calculated_stats = parse_chosen_stats(in_stats, race_stats, rolled)
+    readable_stats = []
+
+    [readable_stats.append(STAT_NAMES[indx]+': '+ str(calculated_stats[indx])) for indx in range(calculated_stats)]
+    print(readable_stats)
+    index = 0
+    while index < len(calculated_stats):
+        readable_stats.append(STAT_NAMES[index]+': '+ str(calculated_stats[index]))
+        index+=1
+    return readable_stats
 
 if __name__ == '__main__':
     #generate()
     races = parse_csv()
-    rolls = Dice_Roller().roll_ndx_y_times_drop_lowest(4, 6, 7)
-    stats = races['Aasimar'].subraces[0].get_stats()[0]
-    stats.sort(reverse=True)
-    print(stats)
-    print(rolls)
-    in_stats = input('Enter your chosen 3 letter increased stats, comma delimited.')
-    rolls = parse_chosen_stats(in_stats, stats, rolls)
-    print (rolls)
+    rolled = Dice_Roller().roll_ndx_y_times_drop_lowest(4, 6, 7)
+    race_stats = races['Aasimar'].subraces[0].get_stats()[0]
+    race_stats.sort(reverse=True)
+
+    print(race_stats)
+    print(rolled)
+
+    calculated_stats = add_rolled_to_race_stats(rolled, race_stats)
+    print(calculated_stats)
+    
     
