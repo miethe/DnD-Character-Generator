@@ -23,9 +23,36 @@ EX_INFO = 13
 SOURCE = 14
 STAT_NAMES = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha']
 
+class Character(object):
+
+    def __init__(self, race = Race(), name = 'None', gender = 'Male'):
+        self.race = race
+        self.name = name
+        self.stats = race.get_stats()
+        self.gender = gender
+        self.language = race.language
+
+    def strength(self):
+        self.stats['strength']
+
+    def dexterity(self):
+        self.stats['dexterity']
+
+    def constitution(self):
+        self.stats['constitution']
+
+    def intelligence(self):
+        self.stats['intelligence']
+
+    def wisdom(self):
+        self.stats['wisdom']
+
+    def charisma(self):
+        self.stats['charisma']
+
 class Race(object):
 
-    def __init__(self, race_name, stats = {}, info = 'None', size = 0, speed = 30, language = 'Common', source = 'PHB'):
+    def __init__(self, race_name = 'Aasimar', stats = {}, info = 'None', size = 0, speed = 30, language = 'Common', source = 'PHB'):
         self.race_name = race_name
         self.subraces = []
         self.stats = stats
@@ -188,27 +215,30 @@ def parse_chosen_stats(in_stats, race_stats, rolled):
 def add_rolled_to_race_stats(rolled, race_stats):
     in_stats = input('Enter your chosen 3 letter increased stats, comma delimited.')
     calculated_stats = parse_chosen_stats(in_stats, race_stats, rolled)
+
     readable_stats = []
 
-    [readable_stats.append(STAT_NAMES[indx]+': '+ str(calculated_stats[indx])) for indx in range(calculated_stats)]
-    print(readable_stats)
-    index = 0
-    while index < len(calculated_stats):
-        readable_stats.append(STAT_NAMES[index]+': '+ str(calculated_stats[index]))
-        index+=1
+    [readable_stats.append(STAT_NAMES[indx]+': '+ str(calculated_stats[indx])) for indx in range(len(calculated_stats))]
     return readable_stats
 
 if __name__ == '__main__':
     #generate()
+    new_character = Character('Aasimar', 'Yolanda')
     races = parse_csv()
     rolled = Dice_Roller().roll_ndx_y_times_drop_lowest(4, 6, 7)
-    race_stats = races['Aasimar'].subraces[0].get_stats()[0]
+    race_stats = races['Aasimar'].get_stats()[0]
     race_stats.sort(reverse=True)
 
-    print(race_stats)
-    print(rolled)
+    print('Current Stats: ' + str(race_stats))
+    print('Rolled numbers: ' + str(rolled))
+
+    for number in rolled:
+        input('Choose a stat for: {0}'.format(number))
+
 
     calculated_stats = add_rolled_to_race_stats(rolled, race_stats)
     print(calculated_stats)
     
     
+
+    # assign stats. Here are your 6 numbers. Here are current race stats. Assign stat to each number, check if already assigned.
