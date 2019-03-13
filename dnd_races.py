@@ -23,33 +23,6 @@ EX_INFO = 13
 SOURCE = 14
 STAT_NAMES = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha']
 
-class Character(object):
-
-    def __init__(self, race = Race(), name = 'None', gender = 'Male'):
-        self.race = race
-        self.name = name
-        self.stats = race.get_stats()
-        self.gender = gender
-        self.language = race.language
-
-    def strength(self):
-        self.stats['strength']
-
-    def dexterity(self):
-        self.stats['dexterity']
-
-    def constitution(self):
-        self.stats['constitution']
-
-    def intelligence(self):
-        self.stats['intelligence']
-
-    def wisdom(self):
-        self.stats['wisdom']
-
-    def charisma(self):
-        self.stats['charisma']
-
 class Race(object):
 
     def __init__(self, race_name = 'Aasimar', stats = {}, info = 'None', size = 0, speed = 30, language = 'Common', source = 'PHB'):
@@ -85,7 +58,7 @@ class Race(object):
         self.stats['charisma']
 
     def add_subrace(self, subrace, stats, info, size, speed, language, source):
-        self.subraces.append(Subrace(subrace, stats, info, size, speed, language, source))
+        self.subraces.append(Subrace(self.race_name, subrace, stats, info, size, speed, language, source))
 
     def get_stats(self, subrace = None):
         if not subrace:
@@ -105,11 +78,38 @@ class Race(object):
 
 class Subrace(Race):
 
-    def __init__(self, subrace_name, stats, info, size, speed, language, source):
-        Race.__init__(self, subrace_name, stats, info, size, speed, language, source)        
+    def __init__(self, race, subrace = 'None', stats = {}, info = 'None', size = 0, speed = 30, language = 'Common', source = 'PHB'):
+        Race.__init__(self, race, stats, info, size, speed, language, source)        
 
     def get_stats(self):
         return [self.stats]
+
+class Character(object):
+
+    def __init__(self, subrace = Subrace('Aasimar', 'None'), name = 'None', gender = 'Male'):
+        self.subrace = subrace
+        self.name = name
+        self.stats = subrace.get_stats()
+        self.gender = gender
+        self.language = subrace.language
+
+    def strength(self):
+        self.stats['strength']
+
+    def dexterity(self):
+        self.stats['dexterity']
+
+    def constitution(self):
+        self.stats['constitution']
+
+    def intelligence(self):
+        self.stats['intelligence']
+
+    def wisdom(self):
+        self.stats['wisdom']
+
+    def charisma(self):
+        self.stats['charisma']
 
 def parse_csv(desired_race=None, sub_race = '(none)', return_subraces = False):
     first_row = True
@@ -223,7 +223,7 @@ def add_rolled_to_race_stats(rolled, race_stats):
 
 if __name__ == '__main__':
     #generate()
-    new_character = Character('Aasimar', 'Yolanda')
+    #new_character = Character('Aasimar', 'Yolanda')
     races = parse_csv()
     rolled = Dice_Roller().roll_ndx_y_times_drop_lowest(4, 6, 7)
     race_stats = races['Aasimar'].get_stats()[0]
@@ -232,8 +232,8 @@ if __name__ == '__main__':
     print('Current Stats: ' + str(race_stats))
     print('Rolled numbers: ' + str(rolled))
 
-    for number in rolled:
-        input('Choose a stat for: {0}'.format(number))
+    """     for number in rolled:
+        input('Choose a stat for: {0}'.format(number)) """
 
 
     calculated_stats = add_rolled_to_race_stats(rolled, race_stats)
