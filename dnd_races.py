@@ -21,7 +21,8 @@ WIS = 11
 CHA = 12
 EX_INFO = 13
 SOURCE = 14
-STAT_NAMES = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha']
+STAT_NAMES = ['str', 'dex', 'con', 'int', 'wis', 'cha']
+STAT_ABBREVIATIONS = {'str':'strength', 'dex':'dexterity', 'con':'constitution', 'int':'intelligence', 'wis':'wisdom', 'cha':'charisma'}
 
 class Race(object):
 
@@ -82,7 +83,7 @@ class Subrace(Race):
         Race.__init__(self, race, stats, info, size, speed, language, source)        
 
     def get_stats(self):
-        return [self.stats]
+        return self.stats
 
 class Character(object):
 
@@ -111,20 +112,32 @@ class Character(object):
     def charisma(self):
         self.stats['charisma']
 
-def parse_csv(desired_race=None, sub_race = '(none)', return_subraces = False):
-    first_row = True
-    important_info={'first_row':first_row, 'race':desired_race, 'subrace':sub_race, 'undesirables':['cent/mino', 'ravnica', 'psz', 'eberron']}
-    filepath = 'races.csv'
-    races = {}
-    
-    with open(filepath, 'r') as racefile:
-        file_lines = csv.reader(racefile, delimiter=',')
+    def set_stats(self, stats, list = True):
+        if list and stats:
+            self.stats['strength'] = stats[0]
+            self.stats['dexterity'] = stats[1]
+            self.stats['constitution'] = stats[2]
+            self.stats['intelligence'] = stats[3]
+            self.stats['wisdom'] = stats[4]
+            self.stats['charisma'] = stats[5]
+        else:
+            self.stats = stats
+
+def parse_csv_into_dict(filepath, important_info):
+    output_dict = {}
+    with open(filepath, 'r') as csv_file:
+        file_lines = csv.reader(csv_file, delimiter=',')
         for row in file_lines:
-            process_row(row, races, important_info)
+            process_row_as_race(row, output_dict, important_info)
+    return output_dict
 
-    return races
+def populate_races(desired_race=None, sub_race = '(none)', return_subraces = False):
+    important_info={'first_row':True, 'race':desired_race, 'subrace':sub_race, 'undesirables':['cent/mino', 'ravnica', 'psz', 'eberron']}
+    filepath = 'races.csv'
+    
+    return parse_csv_into_dict(filepath, important_info)
 
-def process_row(row, races, important_info):
+def process_row_as_race(row, races, important_info):
     if important_info['first_row']:
         important_info['first_row'] = False
         return
@@ -183,6 +196,10 @@ def skip_if_filtered(row, important_info):
         return True
     return False
 
+def add_rolled_choice_to_race_stats(choice, number, character):
+    stat = STAT_ABBREVIATIONS[choice.lower()]
+    character.stats[stat] += number
+
 """ def generate(race='', number=1, gender=''):
     mpath = './models/rnn_layer_epoch_250.pt'
     return
@@ -191,54 +208,34 @@ def skip_if_filtered(row, important_info):
 
     for name_tuple in tuples:
         return (name_tuple[0] + ': ' +name_tuple[2]) """
-        
-def parse_chosen_stats(in_stats, race_stats, rolled):
-    index = 0
-    in_stat_list = in_stats.split(',')
-    
-    while race_stats[index] is not 0:
-        if in_stat_list[index].lower() == 'str':
-            rolled[0] += race_stats[index]
-        elif in_stat_list[index].lower() == 'dex':
-            rolled[1] += race_stats[index]
-        elif in_stat_list[index].lower() == 'con':
-            rolled[2] += race_stats[index]
-        elif in_stat_list[index].lower() == 'int':
-            rolled[3] += race_stats[index]
-        elif in_stat_list[index].lower() == 'wis':
-            rolled[4] += race_stats[index]
-        elif in_stat_list[index].lower() == 'cha':
-            rolled[5] += race_stats[index]
-        index+=1
-    return rolled
-            
-def add_rolled_to_race_stats(rolled, race_stats):
-    in_stats = input('Enter your chosen 3 letter increased stats, comma delimited.')
-    calculated_stats = parse_chosen_stats(in_stats, race_stats, rolled)
-
-    readable_stats = []
-
-    [readable_stats.append(STAT_NAMES[indx]+': '+ str(calculated_stats[indx])) for indx in range(len(calculated_stats))]
-    return readable_stats
 
 if __name__ == '__main__':
     #generate()
-    #new_character = Character('Aasimar', 'Yolanda')
-    races = parse_csv()
-    rolled = Dice_Roller().roll_ndx_y_times_drop_lowest(4, 6, 7)
-    race_stats = races['Aasimar'].get_stats()[0]
+    new_character = Character()
+    races = populate_races()
+
+    rolled_stats = Dice_Roller().roll_ndx_y_times(4, 6, 7, True)
+
+    race_stats = races['Aasimar'].get_stats()
+    new_character.subrace.set_stats(race_stats, True)
     race_stats.sort(reverse=True)
 
-    print('Current Stats: ' + str(race_stats))
-    print('Rolled numbers: ' + str(rolled))
+    print('Current Stats: ' + str(new_character.stats))
+    print('Rolled numbers: ' + str(rolled_stats))
 
-    """     for number in rolled:
-        input('Choose a stat for: {0}'.format(number)) """
+    stats_assigned = {stat:0 for stat in STAT_NAMES}
+    for number in rolled_stats:
+        while True:
+            choice = input('Choose a 3 letter stat for: {0}\n'.format(number))
 
+            if choice not in STAT_ABBREVIATIONS:
+                print('That is not a stat!')
+            elif not stats_assigned[choice]:
+                stats_assigned[choice]=1
+                break
+            else:
+                print('You have already assigned that stat!')
 
-    calculated_stats = add_rolled_to_race_stats(rolled, race_stats)
-    print(calculated_stats)
-    
-    
+        add_rolled_choice_to_race_stats(choice, number, new_character)
 
-    # assign stats. Here are your 6 numbers. Here are current race stats. Assign stat to each number, check if already assigned.
+    print(str(new_character.stats))
