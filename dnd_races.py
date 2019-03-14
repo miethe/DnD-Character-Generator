@@ -31,7 +31,7 @@ class Race(object):
         self.subraces = []
         self.stats = stats
         if stats:
-            self.set_stats(stats, False)
+            self.set_stats(stats)
         else:
             self.set_stats(stats)
         self.size = size
@@ -66,8 +66,8 @@ class Race(object):
             subrace = self.subraces[0]
         return subrace.get_stats()
 
-    def set_stats(self, stats, list = True):
-        if list and stats:
+    def set_stats(self, stats):
+        if stats and stats is list:
             self.stats['strength'] = stats[0]
             self.stats['dexterity'] = stats[1]
             self.stats['constitution'] = stats[2]
@@ -80,7 +80,9 @@ class Race(object):
 class Subrace(Race):
 
     def __init__(self, race, subrace = 'None', stats = {}, info = 'None', size = 0, speed = 30, language = 'Common', source = 'PHB'):
-        Race.__init__(self, race, stats, info, size, speed, language, source)        
+        Race.__init__(self, race, stats, info, size, speed, language, source)
+        self.subrace_name = subrace
+        self.race = race
 
     def get_stats(self):
         return self.stats
@@ -123,6 +125,9 @@ class Character(object):
         else:
             self.stats = stats
 
+    def get_stats(self):
+        return self.stats
+
 def parse_csv_into_dict(filepath, important_info):
     output_dict = {}
     with open(filepath, 'r') as csv_file:
@@ -144,11 +149,22 @@ def process_row_as_race(row, races, important_info):
     race_name = row[RACE]
     if race_name not in races:
         races[race_name] = Race(race_name)
+    
+    race = races[race_name]
+    populate_race_info(race, row)
+
     if 'choose one' in row[SUBRACE].lower():
         return
-    race = races[race_name]
-    create_new_subrace(row, race)
+    else:
+        create_new_subrace(row, race)
     return
+
+def populate_race_info(race, row):
+    race.language = row[LANGUAGE]
+    race.race_info = row[EX_INFO]
+    race.source = row[SOURCE]
+    race.size = row[SIZE]
+    race.speed = row[SPEED]
 
 def get_stats(row):
     index = STR
@@ -211,20 +227,30 @@ def add_rolled_choice_to_race_stats(choice, number, character):
 
 if __name__ == '__main__':
     #generate()
-    new_character = Character()
     races = populate_races()
+    new_character = Character(races['Aasimar'])
+    auto_assign = True
 
     rolled_stats = Dice_Roller().roll_ndx_y_times(4, 6, 7, True)
 
-    race_stats = races['Aasimar'].get_stats()
-    new_character.subrace.set_stats(race_stats, True)
-    race_stats.sort(reverse=True)
+    #race_stats = new_character.get_stats()
+    #new_character.subrace.set_stats(race_stats, True)
+
+    print(str(new_character.subrace.race_name))
+    print(str(new_character.language))
 
     print('Current Stats: ' + str(new_character.stats))
     print('Rolled numbers: ' + str(rolled_stats))
 
     stats_assigned = {stat:0 for stat in STAT_NAMES}
+
+    auto_idx = 0
     for number in rolled_stats:
+        if auto_assign:
+            add_rolled_choice_to_race_stats(STAT_NAMES[auto_idx], number, new_character)
+            auto_idx+=1
+            continue
+
         while True:
             choice = input('Choose a 3 letter stat for: {0}\n'.format(number))
 
