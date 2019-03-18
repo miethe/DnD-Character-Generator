@@ -4,6 +4,7 @@ import time
 import argparse
 import csv
 from copy import deepcopy
+import random
 
 from dice_roller import Dice_Roller
 
@@ -11,17 +12,17 @@ from dice_roller import Dice_Roller
 
 RACE = 0
 SUBRACE = 1
-SIZE = 4
-SPEED = 5
-LANGUAGE = 6
-STR = 7
-DEX = 8
-CON = 9
-INT = 10
-WIS = 11
-CHA = 12
-EX_INFO = 13
-SOURCE = 14
+SIZE = 3
+SPEED = 4
+LANGUAGE = 5
+STR = 6
+DEX = 7
+CON = 8
+INT = 9
+WIS = 10
+CHA = 11
+EX_INFO = 12
+SOURCE = 13
 STAT_NAMES = ['str', 'dex', 'con', 'int', 'wis', 'cha']
 STAT_ABBREVIATIONS = {'str':'strength', 'dex':'dexterity', 'con':'constitution', 'int':'intelligence', 'wis':'wisdom', 'cha':'charisma'}
 
@@ -170,12 +171,14 @@ if __name__ == '__main__':
     #generate()
     races = populate_races()
 
+    #new_character = Character(random.choice(list(races.values())))
     new_character = Character(races['Aasimar:Protector'])
     auto_assign = True
 
     rolled_stats = Dice_Roller().roll_ndx_y_times(4, 6, 7, True)
 
     print(str(new_character.get_race_name()))
+    print(str(new_character.get_language()))
 
     print('Current Stats: ' + str(new_character.get_stats()))
     print('Rolled numbers: ' + str(rolled_stats))

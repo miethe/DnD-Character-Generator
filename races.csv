@@ -1,112 +1,111 @@
-﻿Race,Subrace,AL legal?,Incidence,Size,Speed,Language,Str,Dex,Con,Int,Wis,Cha,Extra,Source
-Aarakocra,(none),,Very Rare,M,25,"Common, Aarakocra,
-Auran",,2,,,1,,50' fly; Talons (1d4),EE 4
-Aasimar,(choose one),AL,Rare,M,30,"Common, Celestial",,,,,,,60' Darkvision; Healing Hands; Light cantrip; Necrotic & Radiant res.,Volo's 104
-Aasimar,Variant,,,,,,,,,,1,2,(-Healing Hands); Celestial Legacy (2 additional spells),DMG 286
-Aasimar,Protector,AL,,,,,,,,,1,2,Radiant Soul (mobility; damage buff),Volo's 105
-Aasimar,Scourge,AL,,,,,,,1,,,2,Radiant Consumption (AoE damage; damage buff),Volo's 105
-Aasimar,Fallen,AL,Very Rare,,,,1,,,,,2,Necrotic Shroud (crowd control; damage buff),Volo's 105
-Bugbear,(none),AL,Monster,M,30,"Common, Goblin",2,1,,,,,60' Darkvision; +5' melee reach; Powerful Build; Surprise Attack; Stealth skill,Volo's 119
-Centaur,(none),,Ravnica,M,40,"Common, Sylvan",2,,,,1,,Charge; Hooves; Equine Build; +1 skill (select); type fey,Ravnica
-Centaur,(none),,Monster,M,40,"Common, Sylvan",2,,,,1,,Charge; Hooves; Equine Build; Survival skill; type humanoid/monstrosity,Cent/Mino
-Changeling,(none),AL Eberron,Eberron,M,30,"Common, +2",,_,,_,,2,"+1 to DEX or INT; Change Appearance; Unsettling Visage; +2 skill (select); +1 tool (assoc. w/ Persona, during which doubled prof.);",Eberron
-Dragonborn,(none),AL,Uncommon,M,30,"Common, Draconic",2,,,,,1,Breath Weapon (select elemental damage); Select elemental res.,PHB 32-34
-Dwarf,(choose one),AL,Common,M,25,"Common, Dwarf",,,,,,,60' Darkvision; Dwarven Combat Training; Stone-cunning; Adv. on poison saves; Poison Res.; Smith's/Brewer's/Mason's tools prof.; Speed not reduced by heavy armor,PHB 18
-Dwarf,Hill,AL,,,,,,,2,,1,,HP max +1 per level,PHB 20
-Dwarf,Mountain,AL,,,,,2,,2,,,,Light & Medium Armor prof.,PHB 20
-Dwarf,Gray (Duergar),AL,Rare,,,+ Undercommon,1,,2,,,,"120' Darkvision; Sunlight Sens.; Duergar Magic; Illusion, charm and paralysis res.",SCAG/Mord
-Elf,(choose one),AL,Common,M,30,"Common, Elvish",,,,,,,"60' Darkvision; Fey Ancestry; Perception skill, Trance","PHB 21-23, Rav"
-Elf,High,AL,Uncommon,,,1,,2,,1,,,Elf Weapon Training; +1 Wizard cantrip,"PHB 23, Rav"
-Elf,Wood,AL,Uncommon,,5,,,2,,,1,,Elf Weapon Training; Mask of the Wild,"PHB 24, Rav"
-Elf,Drow,AL,Uncommon,,,,,2,,,,1,120' Darkvision; Sunlight Sens.; Drow Weapons Training; Drow Magic (spells),"PHB 24, Rav"
-Elf,Eladrin,,Very Rare,,,,,2,,1,,,Elf Weapon Training; Fey Step,DMG 286
-Elf,Eladrin,AL,Very Rare,,,,,2,,,,1,"Fey Step; Autumn, Winter, Spring, or Summer",Mordenkainen
-Elf,Sea Elf,AL,Very Rare,,,+ Aquan,,2,1,,,,Sea Elf Training; 30' swim; amphibious; Friend of the Sea,Mordenkainen
-Elf,Shadar Kai,AL,Very Rare,,,,,2,1,,,,Blessing of the Raven Queen; Necrotic res.,Mordenkainen
-Elf,Avariel,,Very Rare,,,+ Auran,,2,,,,,Flight,Elf Sub
-Elf,Grugach,,Greyhawk,,,- Common; + Sylvan,1,2,,,,,Grugach Weapon Training; Cantrip (Druid),Elf Sub
-Elf,Tajuru,,Plane Shift,,,,,,,,2,1,(-Trance); +2 skill/tool,PSZ 18-19
-Elf,Joraga,,Plane Shift,,5,,,1,,,2,,(-Trance); Elf Weapon Training; Mask of the Wild,PSZ 18-19
-Elf,Mul Daya,,Plane Shift,,,,1,,,,2,,(-Trance); 120' Darkvision; Sunlight Sens.; Elf Weapon Training; Mul Daya Magic,PSZ 18-19
-Firbolg,(none),AL,Rare,M,30,"Common, Elvish, Giant",1,,,,2,,Firbolg Magic; Hidden Step; Powerful Build; Speech of Beast/Leaf,Volo's 106-107
-Genasi,(choose one),AL,Very Rare,M,30,"Common, Primordial",,,,,,,,EE 7
-Genasi,Air,AL,,,,,,1,2,,,,Unending Breath; Mingle with the Wind,EE 9
-Genasi,Earth,AL,,,,,1,,2,,,,Earth Walk; Merge with Stone,EE 9
-Genasi,Fire,AL,,,,,,,2,1,,,60' Darkvision; Reach to the Blaze; Fire res.,EE 9
-Genasi,Water,AL,,,,,,,2,,1,,30' swim; Amphibious; Call to the Wave; Acid res.,EE 10
-Gith,(choose one),AL,Rare,M,30,"Common, Gith",,,,,,,,Mordenkainen
-Gith,Githyanki,AL,,,,1,2,,,1,,,"Light & Medium Armor prof.; Shortsword, Longsword, Greatsword prof.; +1 skill/tool; Githyanki Psionics (spells)",Mordenkainen
-Gith,Githzerai,AL,,,,,,,,1,2,,Adv. against Charmed/Frightened; Githzerai Psionics (spells),Mordenkainen
-Gnome,(choose one),AL,Uncommon,S,25,"Common, Gnomish",,,,,,,"60' Darkvision; Adv. on INT, WIS, & CHA saves against magic",PHB 35
-Gnome,Forest,AL,,,,,,1,,2,,,Minor Illusion cantrip; Speak with Small Beasts,PHB 37
-Gnome,Rock,AL,,,,,,,1,2,,,Artificer's Lore; Tinker,PHB 37
-Gnome,Deep,AL,Rare,,,+ Undercommon,,1,,2,,,"120' Darkvision; Adv. on Stealth to hide in rocky terrain;
+Race,Subrace,Incidence,Size,Speed,Language,Str,Dex,Con,Int,Wis,Cha,Extra,Source
+Aarakocra,(none),Very Rare,M,25,"Common, Aarakocra, Auran",,2,,,1,,50' fly; Talons (1d4),EE 4
+Aasimar,(choose one),Rare,M,30,"Common, Celestial",,,,,,,60' Darkvision; Healing Hands; Light cantrip; Necrotic & Radiant res.,Volo's 104
+Aasimar,Variant,Rare,M,30,"Common, Celestial",,,,,1,2,(-Healing Hands); Celestial Legacy (2 additional spells),DMG 286
+Aasimar,Protector,Rare,M,30,"Common, Celestial",,,,,1,2,Radiant Soul (mobility; damage buff),Volo's 105
+Aasimar,Scourge,Rare,M,30,"Common, Celestial",,,1,,,2,Radiant Consumption (AoE damage; damage buff),Volo's 105
+Aasimar,Fallen,Very Rare,M,30,"Common, Celestial",1,,,,,2,Necrotic Shroud (crowd control; damage buff),Volo's 105
+Bugbear,(none),Monster,M,30,"Common, Goblin",2,1,,,,,60' Darkvision; +5' melee reach; Powerful Build; Surprise Attack; Stealth skill,Volo's 119
+Centaur,(none),Ravnica,M,40,"Common, Sylvan",2,,,,1,,Charge; Hooves; Equine Build; +1 skill (select); type fey,Ravnica
+Centaur,(none),Monster,M,40,"Common, Sylvan",2,,,,1,,Charge; Hooves; Equine Build; Survival skill; type humanoid/monstrosity,Cent/Mino
+Changeling,(none),Eberron,M,30,"Common, +2",,,,,,2,"+1 to DEX or INT; Change Appearance; Unsettling Visage; +2 skill (select); +1 tool (assoc. w/ Persona, during which doubled prof.);",Eberron
+Dragonborn,(none),Uncommon,M,30,"Common, Draconic",2,,,,,1,Breath Weapon (select elemental damage); Select elemental res.,PHB 32-34
+Dwarf,(choose one),Common,M,25,"Common, Dwarf",,,,,,,60' Darkvision; Dwarven Combat Training; Stone-cunning; Adv. on poison saves; Poison Res.; Smith's/Brewer's/Mason's tools prof.; Speed not reduced by heavy armor,PHB 18
+Dwarf,Hill,Common,M,25,"Common, Dwarf",,,2,,1,,HP max +1 per level,PHB 20
+Dwarf,Mountain,Common,M,25,"Common, Dwarf",2,,2,,,,Light & Medium Armor prof.,PHB 20
+Dwarf,Gray (Duergar),Rare,M,25,"Common, Dwarf, Undercommon",1,,2,,,,"120' Darkvision; Sunlight Sens.; Duergar Magic; Illusion, charm and paralysis res.",SCAG/Mord
+Elf,(choose one),Common,M,30,"Common, Elvish",,,,,,,"60' Darkvision; Fey Ancestry; Perception skill, Trance","PHB 21-23, Rav"
+Elf,High,Uncommon,M,30,1,,2,,1,,,Elf Weapon Training; +1 Wizard cantrip,"PHB 23, Rav"
+Elf,Wood,Uncommon,M,5,"Common, Elvish",,2,,,1,,Elf Weapon Training; Mask of the Wild,"PHB 24, Rav"
+Elf,Drow,Uncommon,M,5,"Common, Elvish",,2,,,,1,120' Darkvision; Sunlight Sens.; Drow Weapons Training; Drow Magic (spells),"PHB 24, Rav"
+Elf,Eladrin,Very Rare,M,5,"Common, Elvish",,2,,1,,,Elf Weapon Training; Fey Step,DMG 286
+Elf,Eladrin,Very Rare,M,5,"Common, Elvish",,2,,,,1,"Fey Step; Autumn, Winter, Spring, or Summer",Mordenkainen
+Elf,Sea Elf,Very Rare,M,5,"Common, Elvish, Aquan",,2,1,,,,Sea Elf Training; 30' swim; amphibious; Friend of the Sea,Mordenkainen
+Elf,Shadar Kai,Very Rare,M,5,"Common, Elvish",,2,1,,,,Blessing of the Raven Queen; Necrotic res.,Mordenkainen
+Elf,Avariel,Very Rare,M,5,"Common, Elvish, Auran",,2,,,,,Flight,Elf Sub
+Elf,Grugach,Greyhawk,M,5,"Elvish, Sylvan",1,2,,,,,Grugach Weapon Training; Cantrip (Druid),Elf Sub
+Elf,Tajuru,Plane Shift,M,5,"Common, Elvish",,,,,2,1,(-Trance); +2 skill/tool,PSZ 18-19
+Elf,Joraga,Plane Shift,M,5,"Common, Elvish",,1,,,2,,(-Trance); Elf Weapon Training; Mask of the Wild,PSZ 18-19
+Elf,Mul Daya,Plane Shift,M,5,"Common, Elvish",1,,,,2,,(-Trance); 120' Darkvision; Sunlight Sens.; Elf Weapon Training; Mul Daya Magic,PSZ 18-19
+Firbolg,(none),Rare,M,30,"Common, Elvish, Giant",1,,,,2,,Firbolg Magic; Hidden Step; Powerful Build; Speech of Beast/Leaf,Volo's 106-107
+Genasi,(choose one),Very Rare,M,30,"Common, Primordial",,,,,,,,EE 7
+Genasi,Air,Very Rare,M,30,"Common, Primordial",,1,2,,,,Unending Breath; Mingle with the Wind,EE 9
+Genasi,Earth,Very Rare,M,30,"Common, Primordial",1,,2,,,,Earth Walk; Merge with Stone,EE 9
+Genasi,Fire,Very Rare,M,30,"Common, Primordial",,,2,1,,,60' Darkvision; Reach to the Blaze; Fire res.,EE 9
+Genasi,Water,Very Rare,M,30,"Common, Primordial",,,2,,1,,30' swim; Amphibious; Call to the Wave; Acid res.,EE 10
+Gith,(choose one),Rare,M,30,"Common, Gith",,,,,,,,Mordenkainen
+Gith,Githyanki,Rare,M,30,1,2,,,1,,,"Light & Medium Armor prof.; Shortsword, Longsword, Greatsword prof.; +1 skill/tool; Githyanki Psionics (spells)",Mordenkainen
+Gith,Githzerai,Rare,M,30,"Common, Gith",,,,1,2,,Adv. against Charmed/Frightened; Githzerai Psionics (spells),Mordenkainen
+Gnome,(choose one),Uncommon,S,25,"Common, Gnomish",,,,,,,"60' Darkvision; Adv. on INT, WIS, & CHA saves against magic",PHB 35
+Gnome,Forest,Uncommon,S,25,"Common, Gnomish",,1,,2,,,Minor Illusion cantrip; Speak with Small Beasts,PHB 37
+Gnome,Rock,Uncommon,S,25,"Common, Gnomish",,,1,2,,,Artificer's Lore; Tinker,PHB 37
+Gnome,Deep,Rare,S,25,"Common, Gnomish, Undercommon",,1,,2,,,"120' Darkvision; Adv. on Stealth to hide in rocky terrain;
 (Feat opportunity: Svirfneblin Magic)",SCAG/Mord
-Goblin,(none),AL,Monster,S,30,"Common, Goblin",,2,1,,,,60' Darkvision; Fury of the Small; Disengage/Hide bonus action,Volo's 119
-Goblin,(choose one),,Plane Shift,S,25,"Common, Goblin",,,,,,,60' Darkvision; Unarmored AC (11+DEX mod); Fire & Psychic res.,PSZ 16-17
-Goblin,Grotag,,,,,,,,2,,,,Animal Handling skill,PSZ 16-17
-Goblin,Lavastep,,,,,,,,2,,,,Adv. on Stealth to hide in rocky or subterranean places,PSZ 16-17
-Goblin,Tuktuk,,,,,,,,2,,,,Thieves' Tools prof.,PSZ 16-17
-Goliath,(none),AL,Rare,M,30,"Common, Giant",2,,1,,,,Stone's Endurance; Powerful Build; Mountain Born; Athletics skill,Volo's 108/EE10
-Halfling,(choose one),AL,Common,S,25,"Common, Halfling",,,,,,,Lucky; Brave; Nimbleness,PHB 26
-Halfling,Lightfoot,AL,,,,,,2,,,,1,Attempt to hide behind creature Medium or larger,PHB 28
-Halfling,Stout,AL,,,,,,2,1,,,,Adv. on poison saves; Poison res.,PHB 28
-Halfling,Ghostwise,AL,Rare,,,+ Silent Speech,,2,,,1,,,SCAG 110
-Half-Elf,(optional),AL,Uncommon,M,30,"Common, Elvish",_,_,_,_,_,2,+1 ASI (x2); 60' Darkvision; Fey Ancestry; Skill Versatility (+2 skills),PHB 38
-Half-Elf,Half-Wood,AL,,,,,_,_,_,_,_,2,"(-Skill Versatility); Elf Weapon Training
+Goblin,(none),Monster,S,30,"Common, Goblin",,2,1,,,,60' Darkvision; Fury of the Small; Disengage/Hide bonus action,Volo's 119
+Goblin,(choose one),Plane Shift,S,25,"Common, Goblin",,,,,,,60' Darkvision; Unarmored AC (11+DEX mod); Fire & Psychic res.,PSZ 16-17
+Goblin,Grotag,Plane Shift,S,25,"Common, Goblin",,,2,,,,Animal Handling skill,PSZ 16-17
+Goblin,Lavastep,Plane Shift,S,25,"Common, Goblin",,,2,,,,Adv. on Stealth to hide in rocky or subterranean places,PSZ 16-17
+Goblin,Tuktuk,Plane Shift,S,25,"Common, Goblin",,,2,,,,Thieves' Tools prof.,PSZ 16-17
+Goliath,(none),Rare,M,30,"Common, Giant",2,,1,,,,Stone's Endurance; Powerful Build; Mountain Born; Athletics skill,Volo's 108/EE10
+Halfling,(choose one),Common,S,25,"Common, Halfling",,,,,,,Lucky; Brave; Nimbleness,PHB 26
+Halfling,Lightfoot,Common,S,25,"Common, Halfling",,2,,,,1,Attempt to hide behind creature Medium or larger,PHB 28
+Halfling,Stout,Common,S,25,"Common, Halfling",,2,1,,,,Adv. on poison saves; Poison res.,PHB 28
+Halfling,Ghostwise,Rare,S,25,"Common, Halfling, Silent Speech",,2,,,1,,,SCAG 110
+Half-Elf,(optional),Uncommon,M,30,"Common, Elvish",,,,,,2,+1 ASI (x2); 60' Darkvision; Fey Ancestry; Skill Versatility (+2 skills),PHB 38
+Half-Elf,Half-Wood,Uncommon,M,30,"Common, Elvish",,,,,,2,"(-Skill Versatility); Elf Weapon Training
 or Fleet of Foot or Mask of the Wild",SCAG 116
-Half-Elf,Half-Moon/Sun,AL,,,,,_,_,_,_,_,2,"(-Skill Versatility); Elf Weapon Training
+Half-Elf,Half-Moon/Sun,Uncommon,M,30,"Common, Elvish",,,,,,2,"(-Skill Versatility); Elf Weapon Training
 or +1 Wizard cantrip",SCAG 116
-Half-Elf,Half-Drow,AL,,,,,_,_,_,_,_,2,(-Skill Versatility); Drow Magic,SCAG 116
-Half-Elf,Half-Aquatic,AL,,,,,_,_,_,_,_,2,(-Skill Versatility); 30' swim,SCAG 116
-Half-Orc,(none),AL,Uncommon,M,30,"Common, Orc",2,,1,,,,60' Darkvision; Relentless Endurance; Savage Attacks; Intimidation skill,PHB 40
-Hobgoblin,(none),AL,Monster,M,30,"Common, Goblin",,,2,1,,,60' Darkvision; Light armor; 2 martial weapons; Saving Face,Volo's 119
-Human,(optional),AL,Common,M,30,"Common, +1",1,1,1,1,1,1,,"PHB 29, Rav"
-Human,Variant,AL,,,,,_,_,_,_,_,_,+1 ASI (x2); +1 skill; +1 feat,"PHB 31, Rav"
-Kalashtar,(none),AL Eberron,Eberron,M,30,"Common, Quori, +1",_,_,_,_,1,1,+1 ASI; Dual Mind; Mind Link; Severed from Dreams; Psychic res.; +1 skill (w/ adv),Eberron
-Kender,(none),,Krynn,S,25,"Common, Kenderspeak",,1,,,,1,Immune to Frightened; Taunt; Kender Pockets,Playtest: Races 11
-Kenku,(none),AL,Very Rare,M,30,"Common, Auran
+Half-Elf,Half-Drow,Uncommon,M,30,"Common, Elvish",,,,,,2,(-Skill Versatility); Drow Magic,SCAG 116
+Half-Elf,Half-Aquatic,Uncommon,M,30,"Common, Elvish",,,,,,2,(-Skill Versatility); 30' swim,SCAG 116
+Half-Orc,(none),Uncommon,M,30,"Common, Orc",2,,1,,,,60' Darkvision; Relentless Endurance; Savage Attacks; Intimidation skill,PHB 40
+Hobgoblin,(none),Monster,M,30,"Common, Goblin",,,2,1,,,60' Darkvision; Light armor; 2 martial weapons; Saving Face,Volo's 119
+Human,(optional),Common,M,30,"Common, +1",1,1,1,1,1,1,,"PHB 29, Rav"
+Human,Variant,Common,M,30,"Common, +1",,,,,,,+1 ASI (x2); +1 skill; +1 feat,"PHB 31, Rav"
+Kalashtar,(none),Eberron,M,30,"Common, Quori, +1",,,,,1,1,+1 ASI; Dual Mind; Mind Link; Severed from Dreams; Psychic res.; +1 skill (w/ adv),Eberron
+Kender,(none),Krynn,S,25,"Common, Kenderspeak",,1,,,,1,Immune to Frightened; Taunt; Kender Pockets,Playtest: Races 11
+Kenku,(none),Very Rare,M,30,"Common, Auran
 (all speech via Mimicry)",,2,,,1,,"Expert Forgery; Mimicry; +2 skills (Acrobatics, Deception, Stealth, Sleight of Hand)",Volo's 109
-Kobold,(none),AL,Monster,S,30,"Common, Draconic",-2,2,,,,,"60' Darkvision; Sunlight Sensitivity; Grovel, Cower, Beg; Pack Tactics",Volo's 119
-Kor,(none),,Plane Shift,M,30,"Common,
+Kobold,(none),Monster,S,30,"Common, Draconic",-2,2,,,,,"60' Darkvision; Sunlight Sensitivity; Grovel, Cower, Beg; Pack Tactics",Volo's 119
+Kor,(none),Plane Shift,M,30,"Common,
 Kor sign language",,2,,,1,,30' climb; Lucky; Brave; Athletics & Acrobatics skills,PSZ 11
-Lizardfolk,(none),AL,Very Rare,M,30,"Common, Draconic",,,2,,1,,"30' swim; Hold breath 15min; Bite; Hungry Jaws; Natural Armor; Cunning Artisan; 2 skills (Animal Handling, Nature, Perception, Stealth, Survival)",Volo's 111
-Loxodon,(none),,Ravnica,M,30,"Common, Loxodon",,,2,,1,,"Powerful Build; Natural Armor (12+CON); Trunk; Adv. against Charmed/Frightened; Adv. on Perception, Survival, Investigation checks involving smell",Ravnica
-Merfolk,(choose one),,Plane Shift,M,30,"Common, Merfolk, +1",,,,,,,30' swim; Amphibious,PSZ 13
-Merfolk,Cosi,,,,,,,,,1,,2,1 Bard cantrip; Sleight of Hand & Stealth skills,PSZ 13
-Merfolk,Wind (Emeria),,,,,,,,,,2,1,1 Druid cantrip; Deception & Persuasion skills,PSZ 13
-Merfolk,Water (Ula),,,,,,,,,2,,1,1 Wizard cantrip; Survival skill; Navigator's Tools prof.,PSZ 13
-Minotaur,(none),,Ravnica,M,30,"Common, Minotaur",2,,1,,,,Horns; Hammering Horns; Goring Rush; Intimidation or Persuasion skill; type humanoid/monstrosity,Ravnica
-Minotaur,(none),,Monster,M,30,"Common, Minotaur",2,,1,,,,Horns; Hammering Horns; Goring Rush; Intimidation skill; type humanoid/monstrosity,Cent/Mino
-Orc,(none),AL,Monster,M,30,"Common, Orc",2,,1,-2,,,60' Darkvision; Aggressive (bonus action Dash toward enemy); Powerful Build; Intimidation skill,Volo's 120
-Shifter,(choose one),AL Eberron,Eberron,M,30,Common,,,,,,,60' Darkvision; Shifting; Perception skill,Eberron
-Shifter,Beasthide,AL Eberron,,,,,,1,2,,,,"While shifted, 1d6 temp hp and +1 AC; Athletics skill",Eberron
-Shifter,Longtooth,AL Eberron,,,,,2,1,,,,,"While shifted, unarmed strike bonus action, with extra damage (piercing); Intimidation skill",Eberron
-Shifter,Swiftstride,AL Eberron,,,5,,,2,,,,1,"While shifted, +5 speed, +10 speed reaction, doesn't provoke Opp. Attacks; Acrobatics skill",Eberron
-Shifter,Wildhunt,AL Eberron,,,,,,1,,,2,,"While shifted, adv. on all WIS checks; Mark the Scent; Survival skill",Eberron
-Simic Hybrid,(none),,Ravnica,M,30,"Common, Elvish/Vedalken",_,_,2,_,_,_,60' Darkvision; +1 ASI (other than CON); +1 AC (w/o heavy armor); Acid Spit; Animal Enhancements (at L1 and L5),Ravnica
-Tabaxi,(none),AL,Rare,M,30,"Common, +1",,2,,,,1,"20' climb; 60' Darkvision; Feline Agility (temp. speed*2); Cat's Claws;
+Lizardfolk,(none),Very Rare,M,30,"Common, Draconic",,,2,,1,,"30' swim; Hold breath 15min; Bite; Hungry Jaws; Natural Armor; Cunning Artisan; 2 skills (Animal Handling, Nature, Perception, Stealth, Survival)",Volo's 111
+Loxodon,(none),Ravnica,M,30,"Common, Loxodon",,,2,,1,,"Powerful Build; Natural Armor (12+CON); Trunk; Adv. against Charmed/Frightened; Adv. on Perception, Survival, Investigation checks involving smell",Ravnica
+Merfolk,(choose one),Plane Shift,M,30,"Common, Merfolk, +1",,,,,,,30' swim; Amphibious,PSZ 13
+Merfolk,Cosi,Plane Shift,M,30,"Common, Merfolk, +1",,,,1,,2,1 Bard cantrip; Sleight of Hand & Stealth skills,PSZ 13
+Merfolk,Wind (Emeria),Plane Shift,M,30,"Common, Merfolk, +1",,,,,2,1,1 Druid cantrip; Deception & Persuasion skills,PSZ 13
+Merfolk,Water (Ula),Plane Shift,M,30,"Common, Merfolk, +1",,,,2,,1,1 Wizard cantrip; Survival skill; Navigator's Tools prof.,PSZ 13
+Minotaur,(none),Ravnica,M,30,"Common, Minotaur",2,,1,,,,Horns; Hammering Horns; Goring Rush; Intimidation or Persuasion skill; type humanoid/monstrosity,Ravnica
+Minotaur,(none),Monster,M,30,"Common, Minotaur",2,,1,,,,Horns; Hammering Horns; Goring Rush; Intimidation skill; type humanoid/monstrosity,Cent/Mino
+Orc,(none),Monster,M,30,"Common, Orc",2,,1,-2,,,60' Darkvision; Aggressive (bonus action Dash toward enemy); Powerful Build; Intimidation skill,Volo's 120
+Shifter,(choose one),Eberron,M,30,Common,,,,,,,60' Darkvision; Shifting; Perception skill,Eberron
+Shifter,Beasthide,Eberron,M,30,Common,,1,2,,,,"While shifted, 1d6 temp hp and +1 AC; Athletics skill",Eberron
+Shifter,Longtooth,Eberron,M,30,Common,2,1,,,,,"While shifted, unarmed strike bonus action, with extra damage (piercing); Intimidation skill",Eberron
+Shifter,Swiftstride,Eberron,M,5,Common,,2,,,,1,"While shifted, +5 speed, +10 speed reaction, doesn't provoke Opp. Attacks; Acrobatics skill",Eberron
+Shifter,Wildhunt,Eberron,M,5,Common,,1,,,2,,"While shifted, adv. on all WIS checks; Mark the Scent; Survival skill",Eberron
+Simic Hybrid,(none),Ravnica,M,30,"Common, Elvish/Vedalken",,,2,,,,60' Darkvision; +1 ASI (other than CON); +1 AC (w/o heavy armor); Acid Spit; Animal Enhancements (at L1 and L5),Ravnica
+Tabaxi,(none),Rare,M,30,"Common, +1",,2,,,,1,"20' climb; 60' Darkvision; Feline Agility (temp. speed*2); Cat's Claws;
 Perception & Stealth skills",Volo's 113
-Tiefling,(optional),AL,Uncommon,M,30,"Common, Infernal",,,,1,,2,60' Darkvision; Infernal Legacy (spells); Fire res.,PHB 42
-Tiefling,Variant,AL,Rare,,,,,,,1,,2,(-Infernal Legacy); Devil's Tongue or Hellfire or Winged,SCG 118
-Tiefling,Feral,AL,Rare,,,,,2,,1,,,(-Infernal Legacy); Devil's Tongue or Hellfire or Winged,SCG 118
-Tiefling,Asmodeus,AL,Rare,,,,,,,1,,2,,Mordenkainen
-Tiefling,Baalzebul,AL,Rare,,,,,,,1,,2,(-Infernal Legacy); Legacy of Maladomini,Mordenkainen
-Tiefling,Dispater,AL,Rare,,,,,1,,,,2,(-Infernal Legacy); Legacy of Dis,Mordenkainen
-Tiefling,Fierna,AL,Rare,,,,,,,,1,2,(-Infernal Legacy); Legacy of Phlegethos,Mordenkainen
-Tiefling,Glasya,AL,Rare,,,,,1,,,,2,(-Infernal Legacy); Legacy of Malbolge,Mordenkainen
-Tiefling,Levistus,AL,Rare,,,,,,1,,,2,(-Infernal Legacy); Legacy of Stygia,Mordenkainen
-Tiefling,Mammon,AL,Rare,,,,,,,1,,2,(-Infernal Legacy); Legacy of Minauros,Mordenkainen
-Tiefling,Mephistopheles,AL,Rare,,,,,,,1,,2,(-Infernal Legacy); Legacy of Cania,Mordenkainen
-Tiefling,Zariel,AL,Rare,,,,1,,,,,2,(-Infernal Legacy); Legacy of Avernus,Mordenkainen
-Tiefling,Abyssal,,Rare,,,"Common, Abyssal",,,1,,,2,(-Infernal Legacy); Abyssal Arcana; (-Fire res.); HP max increases by half your level,TOBM
-Tortle,(none),AL,Rare,M,30,"Common, Aquan",2,,,,1,,Natural Armor (base AC = 17); Shell Defense; Claws; Hold Breath; Survival skill,Tortle
-Triton,(none),AL,Very Rare,M,30,"Common, Primordial",1,,1,,,1,"30' swim; Amphibious; Control Air/Water (spells); Emissary of the Sea;
+Tiefling,(optional),Uncommon,M,30,"Common, Infernal",,,,1,,2,60' Darkvision; Infernal Legacy (spells); Fire res.,PHB 42
+Tiefling,Variant,Rare,M,30,"Common, Infernal",,,,1,,2,(-Infernal Legacy); Devil's Tongue or Hellfire or Winged,SCG 118
+Tiefling,Feral,Rare,M,30,"Common, Infernal",,2,,1,,,(-Infernal Legacy); Devil's Tongue or Hellfire or Winged,SCG 118
+Tiefling,Asmodeus,Rare,M,30,"Common, Infernal",,,,1,,2,,Mordenkainen
+Tiefling,Baalzebul,Rare,M,30,"Common, Infernal",,,,1,,2,(-Infernal Legacy); Legacy of Maladomini,Mordenkainen
+Tiefling,Dispater,Rare,M,30,"Common, Infernal",,1,,,,2,(-Infernal Legacy); Legacy of Dis,Mordenkainen
+Tiefling,Fierna,Rare,M,30,"Common, Infernal",,,,,1,2,(-Infernal Legacy); Legacy of Phlegethos,Mordenkainen
+Tiefling,Glasya,Rare,M,30,"Common, Infernal",,1,,,,2,(-Infernal Legacy); Legacy of Malbolge,Mordenkainen
+Tiefling,Levistus,Rare,M,30,"Common, Infernal",,,1,,,2,(-Infernal Legacy); Legacy of Stygia,Mordenkainen
+Tiefling,Mammon,Rare,M,30,"Common, Infernal",,,,1,,2,(-Infernal Legacy); Legacy of Minauros,Mordenkainen
+Tiefling,Mephistopheles,Rare,M,30,"Common, Infernal",,,,1,,2,(-Infernal Legacy); Legacy of Cania,Mordenkainen
+Tiefling,Zariel,Rare,M,30,"Common, Infernal",1,,,,,2,(-Infernal Legacy); Legacy of Avernus,Mordenkainen
+Tiefling,Abyssal,Rare,M,30,"Common, Abyssal",,,1,,,2,(-Infernal Legacy); Abyssal Arcana; (-Fire res.); HP max increases by half your level,TOBM
+Tortle,(none),Rare,M,30,"Common, Aquan",2,,,,1,,Natural Armor (base AC = 17); Shell Defense; Claws; Hold Breath; Survival skill,Tortle
+Triton,(none),Very Rare,M,30,"Common, Primordial",1,,1,,,1,"30' swim; Amphibious; Control Air/Water (spells); Emissary of the Sea;
 Guardians of the Depths (prim. Cold res.)",Volo's 115
-Vampire,(none),,Plane Shift,M,30,"Common, Vampire",,,,1,,2,60' Darkvision; Blood Thirst; Necrotic res.,PSZ 15
-Vedalken,(none),,Ravnica,M,30,"Common, Vedalken, +1",,,,2,1,,"Partially Amphibious; Tireless Precision; Adv. on INT, WIS, & CHA saves",Ravnica
-Warforged,(choose one),AL Eberron,Eberron,M,30,Common,,,,,,,Warforged Resilience; Sentry's Rest; Integrated Protection,Eberron
-Warforged,Envoy,AL Eberron,,,,1,_,_,1,_,_,_,+1 ASI (x2 different); +1 skill; +1 tool; Integrated Tool,Eberron
-Warforged,Juggernaut,AL Eberron,,,,,2,,1,,,,Powerful Build; unarmed strike w/ extra damage (bludgeoning),Eberron
-Warforged,Skirmisher,AL Eberron,,,5,,,2,1,,,,Light Step,Eberron
-Yuan-Ti Pureblood,(none),AL,Monster,M,30,"Common, Abyssal, Draconic",,,,1,,2,60' Darkvision; Innate Spellcasting (spells); Adv. on saves against magic; Immune to Poison/Poisoned,Volo's 120
+Vampire,(none),Plane Shift,M,30,"Common, Vampire",,,,1,,2,60' Darkvision; Blood Thirst; Necrotic res.,PSZ 15
+Vedalken,(none),Ravnica,M,30,"Common, Vedalken, +1",,,,2,1,,"Partially Amphibious; Tireless Precision; Adv. on INT, WIS, & CHA saves",Ravnica
+Warforged,(choose one),Eberron,M,30,Common,,,,,,,Warforged Resilience; Sentry's Rest; Integrated Protection,Eberron
+Warforged,Envoy,Eberron,M,30,1,,,1,,,,+1 ASI (x2 different); +1 skill; +1 tool; Integrated Tool,Eberron
+Warforged,Juggernaut,Eberron,M,30,Common,2,,1,,,,Powerful Build; unarmed strike w/ extra damage (bludgeoning),Eberron
+Warforged,Skirmisher,Eberron,M,5,Common,,2,1,,,,Light Step,Eberron
+Yuan-Ti Pureblood,(none),Monster,M,30,"Common, Abyssal, Draconic",,,,1,,2,60' Darkvision; Innate Spellcasting (spells); Adv. on saves against magic; Immune to Poison/Poisoned,Volo's 120
