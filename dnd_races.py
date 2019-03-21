@@ -25,7 +25,9 @@ CHA = 11
 EX_INFO = 12
 SOURCE = 13
 
+#################################################################################
 # Class Constants
+#################################################################################
 CLASS_NAME = 0
 SUBCLASS = 1
 HITDIE = 2
@@ -39,6 +41,12 @@ CLASS_LANGUAGES = 13
 
 STAT_NAMES = ['str', 'dex', 'con', 'int', 'wis', 'cha']
 STAT_ABBREVIATIONS = {'str':'strength', 'dex':'dexterity', 'con':'constitution', 'int':'intelligence', 'wis':'wisdom', 'cha':'charisma'}
+COMMON_LANGUAGES = ['Common', 'Dwarvish', 'Elvish', 'Giant', 'Gnomish', 'Goblin', 'Halfling', 'Orc']
+EXOTIC_LANGUAGES = ['Abyssal', 'Celestial', 'Draconic', 'Deep Speech', 'Infernal', 'Primordial', 'Sylvan', 'Undercommon', 'Druidic']
+
+#################################################################################
+# Custom Classes
+#################################################################################
 
 class Race(object):
 
@@ -77,7 +85,7 @@ class Race(object):
     def get_race_name(self):
         return ('{0}: {1}'.format(self.race_name, self.subrace_name))
 
-    def get_language(self):
+    def get_languages(self):
         return self.language
 
     def get_stats(self):
@@ -91,38 +99,6 @@ class Race(object):
             self.stats['intelligence'] = stats[3]
             self.stats['wisdom'] = stats[4]
             self.stats['charisma'] = stats[5]
-
-class Character(object):
-
-    def __init__(self, race, c_class = None, name = 'None', gender = 'Male', level = 1):
-        self.race = deepcopy(race)
-        self.c_class = deepcopy(c_class)
-        self.name = name
-        self.gender = gender
-        self.level = level
-        self.hit_points = 0
-
-    def get_language(self):
-        return self.race.language
-
-    def get_stats(self):
-        return self.race.stats
-
-    def get_race_name(self):
-        return ('{0}: {1}'.format(self.race.race_name, self.race.subrace_name))
-
-    def get_class_name(self):
-        return ('{0}: {1}'.format(self.c_class.class_name, self.c_class.subclass_name))
-
-    def get_hitpoints(self):
-        if self.hit_points is 0:
-            self.hit_points = self.set_hitpoints()
-        return self.hit_points
-
-    def set_hitpoints(self):
-        lvl_1_hp = self.c_class.get_hitpoints()
-        leveled_hp = sum(Dice_Roller().roll_n_d_x(self.level, self.c_class.get_hit_die()))
-        return lvl_1_hp + leveled_hp
 
 class Class(object):
     def __init__(self, class_name, subclass_name, hit_die = 'D8', best_abilities = [], saves = [], armor = [], weapons = [], skill_count = 0, tools = [], languages = ''):
@@ -147,6 +123,72 @@ class Class(object):
 
     def get_hit_die(self):
         return self.hit_die
+
+    def get_languages(self):
+        return self.languages
+
+class Character(object):
+
+    def __init__(self, race, c_class = None, name = 'None', gender = 'Male', level = 1):
+        self.race = deepcopy(race)
+        self.c_class = deepcopy(c_class)
+        self.name = name
+        self.gender = gender
+        self.level = level
+        self.hit_points = 0
+        self.languages = ''
+
+    def set_languages(self):
+        race_languages = self.race.get_languages()
+        race_languages_list = self._convert_comma_string_to_list(race_languages)
+
+        class_languages = self.c_class.get_languages()
+        class_languages_list = self._convert_comma_string_to_list(class_languages)
+
+        character_language_list = []
+
+        character_language_list = self._create_language_list(character_language_list, race_languages_list, class_languages_list)
+        character_language_list = self._create_language_list(character_language_list, class_languages_list, race_languages_list)
+
+        self.languages = ','.join(character_language_list)
+
+    def get_languages(self):
+        if not self.languages:
+            self.set_languages()
+        return self.race.language
+
+    def get_stats(self):
+        return self.race.stats
+
+    def get_race_name(self):
+        return ('{0}: {1}'.format(self.race.race_name, self.race.subrace_name))
+
+    def get_class_name(self):
+        return ('{0}: {1}'.format(self.c_class.class_name, self.c_class.subclass_name))
+
+    def get_hitpoints(self):
+        if self.hit_points is 0:
+            self.hit_points = self.set_hitpoints()
+        return self.hit_points
+
+    def set_hitpoints(self):
+        lvl_1_hp = self.c_class.get_hitpoints()
+        leveled_hp = sum(Dice_Roller().roll_n_d_x(self.level, self.c_class.get_hit_die()))
+        return lvl_1_hp + leveled_hp
+
+    def _create_language_list(self, out_list, list_a, list_b):
+        for language_a in list_a:
+            if language_a not in list_b:
+                out_list.append(language_a)
+        return out_list
+
+    def _convert_comma_string_to_list(self, comma_string):
+        if ',' in comma_string:
+            return comma_string.split(',')
+        else:
+            return list(comma_string)
+
+#################################################################################
 
 def populate_classes():
     important_info={'first_row':True, 'undesirables':['cent/mino', 'ravnica', 'psz', 'eberron']}
@@ -302,8 +344,8 @@ def create_final_stats(rolled_stats, new_character, auto_assign=False):
 
 def print_base_character_info(new_character):
     print(str(new_character.get_race_name()))
-    print(str(new_character.get_language()))
     print(str(new_character.get_class_name()))
+    print(str(new_character.get_languages()))
 
 def generate_x_characters(x, races, classes):
     for _ in range(x):
@@ -318,17 +360,17 @@ if __name__ == '__main__':
     #generate()
     test = True
     auto_assign = True
-    
+
     races = populate_races()
     classes = populate_classes()
-
+    
     if test:
         generate_x_characters(20, races, classes)
         exit()
 
     random_race = random.choice(list(races.values()))
     random_class = random.choice(list(classes.values()))
-    new_character = Character(random_race, random_class)
+    new_character = Character(random_race, classes['Bard:None'])
     #new_character = Character(races['Kalashtar:None'], random_class)
 
     print_base_character_info(new_character)
