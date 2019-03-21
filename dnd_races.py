@@ -111,6 +111,9 @@ class Character(object):
     def get_race_name(self):
         return ('{0}: {1}'.format(self.race.race_name, self.race.subrace_name))
 
+    def get_class_name(self):
+        return ('{0}: {1}'.format(self.c_class.class_name, self.c_class.subclass_name))
+
     def get_hitpoints(self):
         if self.hit_points is 0:
             self.hit_points = self.set_hitpoints()
@@ -177,6 +180,11 @@ def process_row_as_class(row, classes, important_info):
         important_info['first_row'] = False
         return
 
+    if 'choose one' in row[SUBCLASS].lower():
+        return
+    if 'none' in row[SUBCLASS].lower():
+        row[SUBCLASS] = 'None'
+
     c_class = add_class_to_dict_and_return(row, classes)
 
     populate_class_info(c_class, row)
@@ -188,8 +196,8 @@ def add_class_to_dict_and_return(row, classes):
         subclass_name = 'None'
     dict_class_name = '{0}:{1}'.format(class_name, subclass_name)
 
-    if dict_class_name not in races:
-        races[dict_class_name] = Class(class_name, subclass_name)
+    if dict_class_name not in classes:
+        classes[dict_class_name] = Class(class_name, subclass_name)
 
     return classes[dict_class_name]
     
@@ -216,6 +224,8 @@ def process_row_as_race(row, races, important_info):
         return
     if 'none' in row[SUBRACE].lower():
         row[SUBRACE] = 'None'
+    if row[SOURCE].lower() in important_info['undesirables']:
+        return
     
     race = add_race_to_dict_and_return(row, races)
 
@@ -257,34 +267,10 @@ def add_rolled_choice_to_race_stats(choice, number, character):
     stat = STAT_ABBREVIATIONS[choice.lower()]
     character.get_stats()[stat] += number
 
-""" def generate(race='', number=1, gender=''):
-    mpath = './models/rnn_layer_epoch_250.pt'
-    return
-    dnd = RNNLayerGenerator(model_path=mpath)
-    tuples = dnd.generate(number, race.lower(), gender)
-
-    for name_tuple in tuples:
-        return (name_tuple[0] + ': ' +name_tuple[2]) """
-
-if __name__ == '__main__':
-    #generate()
-    races = populate_races()
-
-    new_character = Character(random.choice(list(races.values())))
-    #new_character = Character(races['Aasimar:Protector'])
-    auto_assign = True
-
-    rolled_stats = Dice_Roller().roll_ndx_y_times(4, 6, 7, True)
-
-    print(str(new_character.get_race_name()))
-    print(str(new_character.get_language()))
-
-    print('Current Stats: ' + str(new_character.get_stats()))
-    print('Rolled numbers: ' + str(rolled_stats))
-
+def create_final_stats(rolled_stats, new_character, auto_assign=False):
+    auto_idx = 0
     stats_assigned = {stat:0 for stat in STAT_NAMES}
 
-    auto_idx = 0
     for number in rolled_stats:
         if auto_assign:
             # Can use best_abilities in classes here to set ideal stats
@@ -304,5 +290,54 @@ if __name__ == '__main__':
                 print('You have already assigned that stat!')
 
         add_rolled_choice_to_race_stats(choice, number, new_character)
+
+""" def generate(race='', number=1, gender=''):
+    mpath = './models/rnn_layer_epoch_250.pt'
+    return
+    dnd = RNNLayerGenerator(model_path=mpath)
+    tuples = dnd.generate(number, race.lower(), gender)
+
+    for name_tuple in tuples:
+        return (name_tuple[0] + ': ' +name_tuple[2]) """
+
+def print_base_character_info(new_character):
+    print(str(new_character.get_race_name()))
+    print(str(new_character.get_language()))
+    print(str(new_character.get_class_name()))
+
+def generate_x_characters(x, races, classes):
+    for _ in range(x):
+        random_race = random.choice(list(races.values()))
+        random_class = random.choice(list(classes.values()))
+        new_character = Character(random_race, random_class)
+
+        print_base_character_info(new_character)
+        print('##############################################')
+
+if __name__ == '__main__':
+    #generate()
+    test = True
+    auto_assign = True
+    
+    races = populate_races()
+    classes = populate_classes()
+
+    if test:
+        generate_x_characters(20, races, classes)
+        exit()
+
+    random_race = random.choice(list(races.values()))
+    random_class = random.choice(list(classes.values()))
+    new_character = Character(random_race, random_class)
+    #new_character = Character(races['Kalashtar:None'], random_class)
+
+    print_base_character_info(new_character)
+
+    rolled_stats = Dice_Roller().roll_ndx_y_times(4, 6, 7, True)
+
+    print('Current Stats: ' + str(new_character.get_stats()))
+    print('Rolled numbers: ' + str(rolled_stats))
+
+    create_final_stats(rolled_stats, new_character, auto_assign)
 
     print(str(new_character.get_stats()))

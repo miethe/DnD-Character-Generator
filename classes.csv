@@ -1,0 +1,143 @@
+Class,Subclass,HD,Caster,Prepared,"Learn
+Spells","Healing
+1-10",Ability,Saves,Armour,Weapons,Skills,Tools,Language,"Extra
+Attack",Superiority,Evasion,"Fighting
+Style",Expertise,"move
+Options",Source
+Barbarian,,D12,No,N or A,N or A,No,"STR, CON","STR, CON","Medium or
+10, CON, DEX",Martial,2,None,None,5th level,No,Adv.,No,No,10,PHB
+Barbarian,Totem,D12,Ritual,No,Yes,,,,,,2,None,None,,,,,,"~Fly or , 15",PHB or SCAG
+Barbarian,Dwarven Battlerager,D12,,,,1,,,Spiked Medium,,2,None,None,,,,,,Bonus,SCAG
+Barbarian,Ancestral Guardian,D12,,,,,,,,,2,None,None,,,,,,,XGE
+Barbarian,Storm Herald,D12,,,,2,,,,,2,None,None,,,,,,,XGE
+Barbarian,Zealot,D12,,,,,,,,,2,None,None,,,,,,,XGE
+Bard,,D8,Yes,No,Yes,7,CHA,"DEX, CHA",Light,"Simple, 4",3,3,None,No,No,No,No,"Yes, JoaT",No,PHB
+Bard,Lore,D8,,,,10,,,,,3,None,None,,,,,,,PHB
+Bard,Valor,D8,,,,,STR or DEX,,"Medium, shield",Martial,3,None,None,6th level,,,,,,PHB
+Bard,Glamour,D8,,,,8,,,,,3,None,None,,,,,,React,XGE
+Bard,Swords,D8,,,,,DEX,,Medium,Scimitars,3,None,None,6th level,,,Yes,,#NAME?,XGE
+Bard,Whispers,D8,,,,,,,,,3,None,None,,,,,,,XGE
+Bard,Satire,D8,,,,,,,,,2,1,None,,,,,,Bonus,UA:CR
+Cleric,,D8,Yes,Yes,No,8,WIS,"WIS, CHA","Medium, Shield",Simple,2,None,None,No,No,No,No,No,No,PHB
+Cleric,Knowledge,D8,Yes,Yes,No,8,,,,,2,1,None,,,,,Yes,,PHB
+Cleric,Life,D8,Yes,Yes,No,9,,,Heavy,,2,None,None,,,,,,,PHB
+Cleric,Light,D8,Yes,Yes,No,8,,,,,2,None,None,,,,,,,PHB
+Cleric,Nature,D8,Yes,Yes,No,8,,,Heavy,,2,None,None,,,,,,,PHB
+Cleric,Tempest,D8,Yes,Yes,No,8,,,Heavy,Martial,2,None,None,,,,,,,PHB
+Cleric,Trickery,D8,Yes,Yes,No,8,,,,,2,None,None,,,,,,,PHB
+Cleric,War,D8,Yes,Yes,No,8,,,Heavy,Martial,2,None,None,1st as bonus,,,,,,PHB
+Cleric,Death,D8,Yes,Yes,No,8,,,,Martial,2,None,None,,,,,,,DMG
+Cleric,Arcana,D8,Yes,Yes,No,8,,,,,1,None,None,,,,,,,SCAG
+Cleric,Forge,D8,Yes,Yes,No,8,,,Heavy,,2,1,None,,,,,,,XGE
+Cleric,Grave,D8,Yes,Yes,No,9,,,,,2,None,None,,,,,,,XGE
+Cleric,City,D8,Yes,Yes,No,8,,,,Sidearms,2,1,None,,,,,~Yes,Teleport,UA:MM
+Cleric,Protection,D8,Yes,Yes,No,8.5,,,Heavy,,2,None,None,,,,,,,UA:Cleric
+Druid,,D8,Yes,Yes,No,9,Wisdom,"INT, WIS",Medium nature,10 specific,2,1,1,No,No,No,No,No,"Wild
+Shape",PHB
+Druid,Land,D8,More,,,,,,,,2,1,,,,,,,,PHB
+Druid,Moon,D8,Yes,Yes,No,10,,,,,2,1,,,,,,,,PHB
+Druid,Dreams,D8,More,,,10,,,,,2,1,,,,,,,Teleport,XGE
+Druid,Shepherd,D8,Yes,Yes,No,10,,,,,2,1,1,,,,,,,XGE
+Druid,Twilight,D8,More,,,,,,,,2,1,,,,,,,Ethereal,UA:Driud
+Fighter,,D10,No,N or A,N or A,2,STR or DEX,"STR, CON",Heavy,Martial,2,None,None,"5th, 11th, 20th",No,No,Yes,No,Surge,PHB
+Fighter,Champion,D10,,,,3,,,,,,,None,,,,1,,,PHB
+Fighter,Battle Master,D10,,,,,,,,,,1,None,,Yes,,,,~MA,PHB
+Fighter,Eldritch Knight,D10,Yes,No,Yes,,INT,,,,,,None,,,,,,,PHB
+Fighter,Purple Dragon,D10,,,,4,,,,,,,None,,,,,1,,SCAG
+Fighter,Arcane Archer,D10,,,,,,,,,1,,None,,,,,,,XGE
+Fighter,Cavalier,D10,,,,,,,,,1,,None,,,,,,Mount,XGE
+Fighter,Samurai,D10,,,,3,,,,,1,,None,,,,,,,XGE
+Fighter,Scout,D10,,,,,,,,,3,,None,,Yes,,,,,UA:CR
+Fighter,Monster Hunter,D10,Yes,No,Yes,,Wis,,,,2,,1,,Yes,,,,,UA:GH
+Fighter,Knight,D10,,,,,,,,,2,,None,,,,,,Mount,UA:Fighter
+Fighter,Sharpshooter,D10,,,,,,,,,,,1,,,,,,,UA:Fighter
+Monk,,D8,No,N or A,N or A,No,"DEX, WIS","STR, DEX,
+All(14th)","10, WIS, DEX","Simple, 1",2,1,None(all),"5th level, , 1 UA",No,Yes,No,No,30,PHB
+Monk,Open Hand,D8,,,,2,,,,,,,,,,,,,,PHB
+Monk,Shadow,D8,Yes,No,No,,,,,,,,,,,,,,Teleport,PHB
+Monk,Four Elements,D8,Yes,No,Yes,,,,,,,,,,,,,,~Fly,PHB
+Monk,Long Death,D8,Yes,No,No,4,,,,,,,,,,,,,,SCAG
+Monk,Sun Soul,D8,Yes,No,No,,,,,,,,,,,,,,,SCAG or XG
+Monk,Drunken Master,D8,,,,,,,,,1,1,,,,,,,"~, 10",XGE
+Monk,Kensei,D8,,,,,,,,5,,1,,,,,,,,XGE
+Monk,Tranquility,D8,,,,4,,,,,1,,,,,,,,,UA:Monk
+Mystic,,D8,Yes,No,Yes,3,INT,"INT, 
+WIS(Changeable)",Light,Simple,2,None,None,No,No,No,No,No,,UA:PM
+Mystic,Avatar,D8,,,,4,,,"Medium, Shield",,,,,,,,,,,UA:M3
+Mystic,Awakened,D8,,,,,,,,,2,,,,,,,One,Spectral,UA:M3
+Mystic,Immortal,D8,,,,4,,,"10, DEX, CON",,,,,,,,,,,UA:M3
+Mystic,Nomad,D8,,,,,,,,,*,*,*,,,,,,Teleport,UA:M3
+Mystic,Soul Knife,D8,,,Less,,,,Medium,Martial,,,,,,,,,,UA:M3
+Mystic,Wu Jen,D8,,,More,,,,,,2,,,,,,,,,UA:M3
+Paladin,,D10,Yes,Yes,No,5,"STR, CHA","WIS, CHA",Heavy,Martial,2,None,None,5th level,No,No,yes,No,No,PHB
+Paladin,Devotion,D10,,,,,,,,,,,,,,,,,,PHB
+Paladin,Ancients,D10,,,,6,,,,,,,,,,,,,,PHB
+Paladin,Vengeance,D10,,,,,,,,,,,,,,,,,React,PHB
+Paladin,Crown,D10,,,,6,,,,,,,,,,,,,,SCAG
+Paladin,Conquest,D10,,,,,,,,,,,,,,,,,,XGE
+Paladin,Redemption,D10,,,,6,,,,,,,,,,,,,,XGE
+Paladin,Oath-Breaker,D10,,,,,,,,,,,,,,,,,,DMG
+Paladin,Treachery,D10,,,,,,,,,,,,,,,,,Teleport,UA:Paladin
+Ranger,,D10,Yes,No,Yes,9,"(DEX or STR), WIS","STR, DEX",Medium,Martial,3,None,None,5th level,No,No,Yes,No,No,PHB
+Ranger,Hunter,D10,,,,,,,,,,,,,,Yes,,,,PHB
+Ranger,Beast Master,D10,,,,,,,,,,,,,,,Pet,,,PHB
+Ranger,Gloom Stalker,D10,,,More,,,Wis,,,,,,Partial,,,,,"~, 10",XGE
+Ranger,Horizon Walker,D10,,,More,,,,,,,,,,,,,,Teleport,XGE
+Ranger,Monster Slayer,D10,,,More,,,,,,,,,,,,,,,XGE
+Ranger,Primeval Guardian,D10,,,More,10,,,,,,,,,,,,,,UA:R&R
+Ranger Variant,,D10,No,N or A,N or A,4,DEX or STR,"STR, DEX",Medium,Martial,3,None,None,5th level,Yes,No,Yes,No,~MA,UA:CDV
+UA Ranger,,2D6,No,N or A,N or A,No,"DEX, WIS","DEX, WIS","Light,  Shields",Martial,3,1,None,5th level,No,No,Yes,No,No,UA:RO
+UA Ranger,Guardian,2D6,,,,2,,,,,,,,,,,,,,UA:RO
+UA Ranger,Seeker,2D6,,,,,,,,,,,,,,,,,,UA:RO
+UA Ranger,Stalker,2D6,,,,,,,,,,,,,,,,,,UA:RO
+Revised Ranger,,D10,Yes,No,Yes,9,"DEX or STR , WIS","STR, DEX",Medium,Martial,3,None,None,No,No,No,Yes,No,Bonus,UA:RR
+Revised Ranger,Beast (master),D10,,,,,,,,,,,,,,,Pet,,,UA:RR
+Revised Ranger,Hunter,D10,,,,,,,,,,,,5th level,,Yes,,,,UA:RR
+Revised Ranger,Deep Stalker,D10,,,More,,,Wis,,,,,,"Partial,5th level",,,,,"~, 10",UA:RR
+Rogue,,D8,No,N or A,N or A,No,DEX,"DEX, INT, WIS",Light,"Simple, 4",4,1,None,No,No,1 or 2 Hit,No,"Yes, RT",Bonus,PHB
+Rogue,Thief,D8,,,,,,,,,,,,,,,,,Climb,PHB
+Rogue,Assassin,D8,,,,,,,,,,2,,,,,,,,PHB
+Rogue,Arcane Trickster,D8,Yes,No,Yes,,INT,,,,,,,,,,,,,PHB
+Rogue,Swashbuckler,D8,,,,,CHA,,,,,,,,,,,,,SCAG or XG
+Rogue,Mastermind,D8,,,,,,,,,,,,,,,,,,SCAG or XG
+Rogue,Inquisitive,D8,,,,,Wis,,,,,,,,,,,,,XGE
+Rogue,Scout,D8,,,,,,,,,,2,,1 with SA,,,,2,#NAME?,XGE
+Sorcerer,(choose one),D6,Yes,No,Yes,No,CHA,"CON, CHA",None,5 specific,2,None,None,No,No,No,No,No,No,PHB
+Sorcerer,Draconic,D6,,,,,,,"13, DEX",,,,,,,,,,Fly,PHB
+Sorcerer,Wild Magic,D6,,,,,,,,,,,,,,,,,,PHB
+Sorcerer,Divine Soul,D6,,,More,8,,,,,,,,,,,,,Fly,XGE
+Sorcerer,Storm,D6,,,,,,,,,,,1,,,,,,Fly,SCAG or XG
+Sorcerer,Shadow,D6,,,,,,,,,,,,,,,Pet,,Teleport,XGE
+Sorcerer,Phoenix,D6,,,,1,,,,,,,,,,,,,Fly,UA:Sorc
+Sorcerer,Sea,D6,,,,,,,,,,,,,,,,,Swim,UA:Sorc
+Sorcerer,Stone,D6,,,More,,,,Shields,Martial,,,,,,,,,,UA:Sorc
+Warlock,(choose one),D8,Yes,No,Yes,1,CHA,"WIS, CHA",Light,"Simple
+(, PoB)",2(~4),None,None,Pact of Blade,No,No,No,No,No,PHB
+Warlock,Arch-fey,D8,,,,,,,,,,,,,,,,,Teleport,PHB
+Warlock,Fiend,D8,,,,2,,,,,,,,,,,,,,PHB
+Warlock,G.O.O.,D8,,,,,,,,,,,,,,,,,,PHB
+Warlock,Undying,D8,,,,3,,,,,,,,,,,,,,SCAG
+Warlock,Celestial,D8,,,More,5,,,,,,,,,,,,,,XGE
+Warlock,Hexblade,D8,,,,2,,,"Medium, shield",Martial,,,,,,,,,,XGE
+Warlock,Ghost in the Machine,D8,,,,,,,,,,1,,,,,,,Teleport,UA:MM
+Warlock,The Seeker,D8,,,,,,,,,,,,,,,,,Timestop,UA:F
+Warlock,Raven Queen,D8,,,More,,,,,,,,,,,,,,Fly,UA:W&W
+Wizard,(choose one),D6,Yes,Yes,Yes,No,INT,"INT, WIS",None,5 Specific,2,None,None,No,No,No,No,No,No,PHB
+Wizard,Abjuration,D6,,,,,,,,,,,,,,,,,,PHB
+Wizard,Conjuration,D6,,,,,,,,,,,,,,,,,Teleport,PHB
+Wizard,Divination,D6,,,,,,,,,,,,,,,,,,PHB
+Wizard,Enchantment,D6,,,,,,,,,,,,,,,,,,PHB
+Wizard,Evocation,D6,,,,,,,,,,,,,,,,,,PHB
+Wizard,Illusion,D6,,,,,,,,,,,,,,,,,,PHB
+Wizard,Necromancy,D6,,,,4,,,,,,,,,,,,,,PHB
+Wizard,Transmutation,D6,,,,3,,,,,,,,,,,,,"~, 10",PHB
+Wizard,Elf Bladesinger,D6,,,,,,,Light,1,1,,,6th level,,,,,10,SCAG
+Wizard,War Magic,D6,,,,,,,,,,,,,,,,,,XGE
+Wizard,Artificer,D6,,,,4,,,,,,,,,,,,,,UA:EBB
+Wizard,Technomancy,D6,,,,,,,,,,2,,,,,,,,UA:MM
+Wizard,Theurgy,D6,,,,9(life),,,,,,,,,,,,,,UA:AT
+Wizard,Lore,D6,,,More,,,,,,,,,,,,,Yes,,UA:W&W
+Artificer,,D8,Yes,No,Yes,3,INT,"CON, INT",Medium,Simple,3,3,None,No,No,No,No,Yes,Craft,UA: Artif
+Artificer,Alchemist,D8,,,,4,,,,,,,,,,,,,"~, 20",UA: Artif
+Artificer,Gunsmith,D8,,,,,,,,Gun,,,,,,,,,,UA: Artif
+Rune Scribe,PrC,D8,slots,No,N or A,No,"DEX, INT",None,None,None,None,3,None,No,None,No,No,No,,UA: RMPC

@@ -1,5 +1,5 @@
 Race,Subrace,Incidence,Size,Speed,Language,Str,Dex,Con,Int,Wis,Cha,Extra,Source
-Aarakocra,(none),Very Rare,M,25,"Common, Aarakocra, Auran",,2,,,1,,50' fly; Talons (1d4),EE 4
+Aarakocra,(none),Very Rare,M,25,"Common, Aarakocra, Auran",,2,,,1,,50' fly; Talons (1d4),EE 4
 Aasimar,(choose one),Rare,M,30,"Common, Celestial",,,,,,,60' Darkvision; Healing Hands; Light cantrip; Necrotic & Radiant res.,Volo's 104
 Aasimar,Variant,Rare,M,30,"Common, Celestial",,,,,1,2,(-Healing Hands); Celestial Legacy (2 additional spells),DMG 286
 Aasimar,Protector,Rare,M,30,"Common, Celestial",,,,,1,2,Radiant Soul (mobility; damage buff),Volo's 105
