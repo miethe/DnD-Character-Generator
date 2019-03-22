@@ -10,7 +10,9 @@ from dice_roller import Dice_Roller
 
 #from generator import RNNLayerGenerator
 
+#################################################################################
 # Race Constants
+#################################################################################
 RACE = 0
 SUBRACE = 1
 SIZE = 3
@@ -39,6 +41,15 @@ SKILL_COUNT = 11
 TOOLS = 12
 CLASS_LANGUAGES = 13
 SUBCLASS_LEVEL = 21
+
+#################################################################################
+# Background Constants
+#################################################################################
+BACKGROUND_NAME = 0
+BACKGROUND_SKILLS = 1
+BACKGROUND_LANGUAGE = 2
+BACKGROUND_TOOLS = 3
+BACKGROUND_SOURCE = 4
 
 STAT_NAMES = ['str', 'dex', 'con', 'int', 'wis', 'cha']
 STAT_ABBREVIATIONS = {'str':'strength', 'dex':'dexterity', 'con':'constitution', 'int':'intelligence', 'wis':'wisdom', 'cha':'charisma'}
@@ -171,6 +182,7 @@ class Character(object):
         self.hit_points = 0
         self.languages = ''
         self.tools = []
+        self.background = None
 
     def set_languages(self):
         race_languages = self.race.get_languages()
@@ -213,6 +225,12 @@ class Character(object):
     def get_name(self):
         return self.name
 
+    def set_background(self, background):
+        self.background = background
+
+    def get_background(self):
+        return self.background
+
     def _create_language_list(self, out_list, list_a, list_b):
         for language_a in list_a:
             if language_a not in list_b:
@@ -224,6 +242,15 @@ class Character(object):
             return comma_string.split(',')
         else:
             return list(comma_string)
+
+class Background(object):
+
+    def __init__(self, background_name, skills, language, tools, source):
+        self.background_name = background_name
+        self.skills = skills
+        self.language = language
+        self.tools = tools
+        self.source = source
 
 #################################################################################
 
@@ -237,6 +264,13 @@ def populate_races():
     important_info={'first_row':True, 'undesirables':['cent/mino', 'ravnica', 'psz', 'eberron']}
     filepath = 'races.csv'
     
+    return parse_csv_into_dict(filepath, important_info)
+
+def populate_backgrounds():
+    important_info={'first_row':True}
+    filepath = 'Backgrounds.csv'
+    
+    # Modify this to be more flexible
     return parse_csv_into_dict(filepath, important_info)
 
 def parse_csv_into_dict(filepath, important_info, classes = False):

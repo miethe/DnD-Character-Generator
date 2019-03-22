@@ -75,13 +75,13 @@ Paladin,Conquest,D10,Yes,Yes,No,,"STR, CHA","WIS, CHA",Heavy,,,,,,,,,,,XGE,3
 Paladin,Redemption,D10,Yes,Yes,No,6,"STR, CHA","WIS, CHA",Heavy,,,,,,,,,,,XGE,3
 Paladin,Oath-Breaker,D10,Yes,Yes,No,,"STR, CHA","WIS, CHA",Heavy,,,,,,,,,,,DMG,3
 Paladin,Treachery,D10,Yes,Yes,No,,"STR, CHA","WIS, CHA",Heavy,,,,,,,,,,Teleport,UA:Paladin,3
-Ranger,(choose one),D10,Yes,No,Yes,9,"(DEX or STR), WIS","STR, DEX",Medium,Martial,3,None,None,5th level,No,No,Yes,No,No,PHB,3
-Ranger,Hunter,D10,Yes,No,Yes,,"(DEX or STR), WIS","STR, DEX",Medium,,,,,,,Yes,,,,PHB,3
-Ranger,Beast Master,D10,Yes,No,Yes,,"(DEX or STR), WIS","STR, DEX",Medium,,,,,,,,Pet,,,PHB,3
-Ranger,Gloom Stalker,D10,Yes,No,More,,"(DEX or STR), WIS","STR, DEX",Medium,,,,,Partial,,,,,"~, 10",XGE,3
-Ranger,Horizon Walker,D10,Yes,No,More,,"(DEX or STR), WIS","STR, DEX",Medium,,,,,,,,,,Teleport,XGE,3
-Ranger,Monster Slayer,D10,Yes,No,More,,"(DEX or STR), WIS","STR, DEX",Medium,,,,,,,,,,,XGE,3
-Ranger,Primeval Guardian,D10,Yes,No,More,10,"(DEX or STR), WIS","STR, DEX",Medium,,,,,,,,,,,UA:R&R,3
+Ranger,(choose one),D10,Yes,No,Yes,9,"DEX or STR, WIS","STR, DEX",Medium,Martial,3,None,None,5th level,No,No,Yes,No,No,PHB,3
+Ranger,Hunter,D10,Yes,No,Yes,,"DEX or STR, WIS","STR, DEX",Medium,,,,,,,Yes,,,,PHB,3
+Ranger,Beast Master,D10,Yes,No,Yes,,"DEX or STR, WIS","STR, DEX",Medium,,,,,,,,Pet,,,PHB,3
+Ranger,Gloom Stalker,D10,Yes,No,More,,"DEX or STR, WIS","STR, DEX",Medium,,,,,Partial,,,,,"~, 10",XGE,3
+Ranger,Horizon Walker,D10,Yes,No,More,,"DEX or STR, WIS","STR, DEX",Medium,,,,,,,,,,Teleport,XGE,3
+Ranger,Monster Slayer,D10,Yes,No,More,,"DEX or STR, WIS","STR, DEX",Medium,,,,,,,,,,,XGE,3
+Ranger,Primeval Guardian,D10,Yes,No,More,10,"DEX or STR, WIS","STR, DEX",Medium,,,,,,,,,,,UA:R&R,3
 Ranger Variant,None,D10,No,N or A,N or A,4,DEX or STR,"STR, DEX",Medium,Martial,3,None,None,5th level,Yes,No,Yes,No,~MA,UA:CDV,3
 UA Ranger,(choose one),2D6,No,N or A,N or A,No,"DEX, WIS","DEX, WIS","Light,  Shields",Martial,3,1,None,5th level,No,No,Yes,No,No,UA:RO,3
 UA Ranger,Guardian,2D6,No,N or A,N or A,2,"DEX, WIS","DEX, WIS",,,,,,,,,,,,UA:RO,3
