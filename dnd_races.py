@@ -145,6 +145,9 @@ class Class(object):
     def get_subclass_level(self):
         return int(self.subclass_level)
 
+    def is_subclass_eligible(self, character_level):
+        return ((self.get_subclass_level() <= character_level) and self.subclasses)
+
 class Character(object):
 
     def __init__(self, race, c_class = None, level = 1, name = 'None', gender = 'Male'):
@@ -402,7 +405,7 @@ def generate_x_characters(x, races, classes):
         random_race = random.choice(list(races.values()))
         random_class = random.choice(list(classes.values()))
 
-        if random_class.get_subclass_level() <= character_level and random_class.subclasses:
+        if random_class.is_subclass_eligible(character_level):
             random_class = random.choice(random_class.subclasses)
 
         new_character = Character(random_race, random_class)
