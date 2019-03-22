@@ -38,6 +38,7 @@ WEAPONS = 10
 SKILL_COUNT = 11
 TOOLS = 12
 CLASS_LANGUAGES = 13
+SUBCLASS_LEVEL = 21
 
 STAT_NAMES = ['str', 'dex', 'con', 'int', 'wis', 'cha']
 STAT_ABBREVIATIONS = {'str':'strength', 'dex':'dexterity', 'con':'constitution', 'int':'intelligence', 'wis':'wisdom', 'cha':'charisma'}
@@ -101,9 +102,11 @@ class Race(object):
             self.stats['charisma'] = stats[5]
 
 class Class(object):
-    def __init__(self, class_name, subclass_name, hit_die = 'D8', best_abilities = [], saves = [], armor = [], weapons = [], skill_count = 0, tools = [], languages = ''):
+    def __init__(self, class_name, hit_die = 'D8', best_abilities = [], saves = [], armor = [], weapons = [], skill_count = 0, tools = [], languages = ''):
         self.class_name = class_name
-        self.subclass_name = subclass_name
+        self.subclasses = []
+        self.is_subclass = False
+        self.parent_class_name = 'None'
         self.hit_die = hit_die
 
         # can use for improved auto character gens
@@ -116,6 +119,7 @@ class Class(object):
         self.skill_count = skill_count
         self.tools = tools
         self.languages = languages
+        self.subclass_level = 1
         self.starting_hit_points = self.get_hitpoints()
 
     def get_hitpoints(self):
@@ -127,9 +131,23 @@ class Class(object):
     def get_languages(self):
         return self.languages
 
+    def add_subclasses(self, subclass):
+        self.subclasses.append(subclass)
+
+    def get_name(self):
+        if self.is_subclass:
+            return '{0}: {1}'.format(self.parent_class_name, self.class_name)
+        return self.class_name
+
+    def get_base_class_name(self):
+        return self.parent_class_name
+
+    def get_subclass_level(self):
+        return int(self.subclass_level)
+
 class Character(object):
 
-    def __init__(self, race, c_class = None, name = 'None', gender = 'Male', level = 1):
+    def __init__(self, race, c_class = None, level = 1, name = 'None', gender = 'Male'):
         self.race = deepcopy(race)
         self.c_class = deepcopy(c_class)
         self.name = name
@@ -164,7 +182,7 @@ class Character(object):
         return ('{0}: {1}'.format(self.race.race_name, self.race.subrace_name))
 
     def get_class_name(self):
-        return ('{0}: {1}'.format(self.c_class.class_name, self.c_class.subclass_name))
+        return (self.c_class.get_name())
 
     def get_hitpoints(self):
         if self.hit_points is 0:
@@ -175,6 +193,9 @@ class Character(object):
         lvl_1_hp = self.c_class.get_hitpoints()
         leveled_hp = sum(Dice_Roller().roll_n_d_x(self.level, self.c_class.get_hit_die()))
         return lvl_1_hp + leveled_hp
+
+    def get_name(self):
+        return self.name
 
     def _create_language_list(self, out_list, list_a, list_b):
         for language_a in list_a:
@@ -191,7 +212,7 @@ class Character(object):
 #################################################################################
 
 def populate_classes():
-    important_info={'first_row':True, 'undesirables':['cent/mino', 'ravnica', 'psz', 'eberron']}
+    important_info={'first_row':True, 'undesirables':['cent/mino', 'ravnica', 'psz', 'eberron'], 'add_subclass':False}
     filepath = 'classes.csv'
 
     return parse_csv_into_dict(filepath, important_info, True)
@@ -222,36 +243,59 @@ def process_row_as_class(row, classes, important_info):
         important_info['first_row'] = False
         return
 
-    if 'choose one' in row[SUBCLASS].lower():
-        return
-    if 'none' in row[SUBCLASS].lower():
-        row[SUBCLASS] = 'None'
+    if 'choose one' in row[SUBCLASS].lower() or 'none' in row[SUBCLASS].lower():
+        row[SUBCLASS] = 'Base Class'
 
-    c_class = add_class_to_dict_and_return(row, classes)
+    # This check is necessary in case we had a class without any subclasses
+    if row[SUBCLASS] == 'Base Class':
+        important_info['add_subclass'] = False
 
-    populate_class_info(c_class, row)
+    if important_info['add_subclass']:
+        class_object = add_subclass_to_class(row, classes)
+        populate_class_info(class_object, row, True)
+    else:
+        class_object = add_class_to_dict_and_return(row, classes)
+        populate_class_info(class_object, row)
+
+
+    # When not adding subclasses, note we are in a base class
+    if not important_info['add_subclass']:
+        important_info['add_subclass'] = row[SUBCLASS] == 'Base Class'
+    return
+
+def add_subclass_to_class(row, classes):
+    class_name = row[CLASS_NAME]
+    subclass_name = row[SUBCLASS]
+
+    class_object = classes[class_name]
+    subclass_object = Class(subclass_name)
+
+    class_object.add_subclasses(subclass_object)
+    
+    return subclass_object
 
 def add_class_to_dict_and_return(row, classes):
     class_name = row[CLASS_NAME]
-    subclass_name = row[SUBCLASS]
-    if not row[SUBCLASS]:
-        subclass_name = 'None'
-    dict_class_name = '{0}:{1}'.format(class_name, subclass_name)
 
-    if dict_class_name not in classes:
-        classes[dict_class_name] = Class(class_name, subclass_name)
+    if class_name not in classes:
+        classes[class_name] = Class(class_name)
 
-    return classes[dict_class_name]
+    return classes[class_name]
     
-def populate_class_info(c_class, row):
-    c_class.hit_die = row[HITDIE]
-    c_class.best_abilities = row[BEST_ABILITIES]
-    c_class.saves = row[SAVES]
-    c_class.armor = row[ARMOR]
-    c_class.weapons = row[WEAPONS]
-    c_class.skill_count = row[SKILL_COUNT]
-    c_class.tools = row[TOOLS]
-    c_class.language = row[LANGUAGE]
+def populate_class_info(class_object, row, is_subclass = False):
+    class_object.hit_die = row[HITDIE]
+    class_object.best_abilities = row[BEST_ABILITIES]
+    class_object.saves = row[SAVES]
+    class_object.armor = row[ARMOR]
+    class_object.weapons = row[WEAPONS]
+    class_object.skill_count = row[SKILL_COUNT]
+    class_object.tools = row[TOOLS]
+    class_object.language = row[LANGUAGE]
+    class_object.subclass_level = row[SUBCLASS_LEVEL]
+
+    if is_subclass:
+        class_object.is_subclass = True
+        class_object.parent_class_name = row[CLASS_NAME]
 
 #################################################################################
 #  Race Functions
@@ -264,7 +308,7 @@ def process_row_as_race(row, races, important_info):
 
     if 'choose one' in row[SUBRACE].lower():
         return
-    if 'none' in row[SUBRACE].lower():
+    if 'none' in row[SUBRACE].lower() or 'optional' in row[SUBRACE].lower():
         row[SUBRACE] = 'None'
     if row[SOURCE].lower() in important_info['undesirables']:
         return
@@ -333,14 +377,17 @@ def create_final_stats(rolled_stats, new_character, auto_assign=False):
 
         add_rolled_choice_to_race_stats(choice, number, new_character)
 
-""" def generate(race='', number=1, gender=''):
+""" def generate_name(race='', number=1, gender=''):
+    NAME = 0
+    RACE = 1
+    GENDER = 2
+
     mpath = './models/rnn_layer_epoch_250.pt'
-    return
     dnd = RNNLayerGenerator(model_path=mpath)
     tuples = dnd.generate(number, race.lower(), gender)
 
     for name_tuple in tuples:
-        return (name_tuple[0] + ': ' +name_tuple[2]) """
+        return (name_tuple[NAME] + ': ' +name_tuple[GENDER])  """
 
 def print_base_character_info(new_character):
     print(str(new_character.get_race_name()))
@@ -349,15 +396,21 @@ def print_base_character_info(new_character):
 
 def generate_x_characters(x, races, classes):
     for _ in range(x):
+        
+        character_level = random.randrange(1,5)
+
         random_race = random.choice(list(races.values()))
         random_class = random.choice(list(classes.values()))
+
+        if random_class.get_subclass_level() <= character_level and random_class.subclasses:
+            random_class = random.choice(random_class.subclasses)
+
         new_character = Character(random_race, random_class)
 
         print_base_character_info(new_character)
         print('##############################################')
 
 if __name__ == '__main__':
-    #generate()
     test = True
     auto_assign = True
 
@@ -370,7 +423,10 @@ if __name__ == '__main__':
 
     random_race = random.choice(list(races.values()))
     random_class = random.choice(list(classes.values()))
-    new_character = Character(random_race, classes['Bard:None'])
+    
+    # name = generate_name()
+
+    new_character = Character(random_race, random_class)
     #new_character = Character(races['Kalashtar:None'], random_class)
 
     print_base_character_info(new_character)
