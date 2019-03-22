@@ -122,6 +122,18 @@ class Class(object):
         self.subclass_level = 1
         self.starting_hit_points = self.get_hitpoints()
 
+    def get_best_abilities(self):
+        ability_list = self.best_abilities.split(',')
+        abilities = []
+        if ability_list:
+            first_ability = self.best_abilities.split(',')[0].split('or')[0]
+            abilities += first_ability
+        if len(ability_list) > 1:
+            second_ability = self.best_abilities.split(',')[1]
+            abilities += second_ability
+
+        return abilities
+
     def get_hitpoints(self):
         return int(self.hit_die[1])
 
@@ -150,20 +162,21 @@ class Class(object):
 
 class Character(object):
 
-    def __init__(self, race, c_class = None, level = 1, name = 'None', gender = 'Male'):
+    def __init__(self, race, class_object = None, level = 1, name = 'None', gender = 'Male'):
         self.race = deepcopy(race)
-        self.c_class = deepcopy(c_class)
+        self.class_object = deepcopy(class_object)
         self.name = name
         self.gender = gender
         self.level = level
         self.hit_points = 0
         self.languages = ''
+        self.tools = []
 
     def set_languages(self):
         race_languages = self.race.get_languages()
         race_languages_list = self._convert_comma_string_to_list(race_languages)
 
-        class_languages = self.c_class.get_languages()
+        class_languages = self.class_object.get_languages()
         class_languages_list = self._convert_comma_string_to_list(class_languages)
 
         character_language_list = []
@@ -185,7 +198,7 @@ class Character(object):
         return ('{0}: {1}'.format(self.race.race_name, self.race.subrace_name))
 
     def get_class_name(self):
-        return (self.c_class.get_name())
+        return (self.class_object.get_name())
 
     def get_hitpoints(self):
         if self.hit_points is 0:
@@ -193,8 +206,8 @@ class Character(object):
         return self.hit_points
 
     def set_hitpoints(self):
-        lvl_1_hp = self.c_class.get_hitpoints()
-        leveled_hp = sum(Dice_Roller().roll_n_d_x(self.level, self.c_class.get_hit_die()))
+        lvl_1_hp = self.class_object.get_hitpoints()
+        leveled_hp = sum(Dice_Roller().roll_n_d_x(self.level, self.class_object.get_hit_die()))
         return lvl_1_hp + leveled_hp
 
     def get_name(self):
