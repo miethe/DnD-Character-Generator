@@ -257,30 +257,26 @@ def populate_classes():
     important_info={'first_row':True, 'undesirables':['cent/mino', 'ravnica', 'psz', 'eberron'], 'add_subclass':False}
     filepath = 'classes.csv'
 
-    return parse_csv_into_dict(filepath, important_info, True)
+    return parse_csv_into_dict(filepath, important_info, process_row_as_class)
 
 def populate_races():
     important_info={'first_row':True, 'undesirables':['cent/mino', 'ravnica', 'psz', 'eberron']}
     filepath = 'races.csv'
     
-    return parse_csv_into_dict(filepath, important_info)
+    return parse_csv_into_dict(filepath, important_info, process_row_as_race)
 
 def populate_backgrounds():
     important_info={'first_row':True}
     filepath = 'Backgrounds.csv'
     
-    # Modify this to be more flexible
-    return parse_csv_into_dict(filepath, important_info)
+    return parse_csv_into_dict(filepath, important_info, process_row_as_background)
 
-def parse_csv_into_dict(filepath, important_info, classes = False):
+def parse_csv_into_dict(filepath, important_info, method_of_processing):
     output_dict = {}
     with open(filepath, 'r') as csv_file:
         file_lines = csv.reader(csv_file, delimiter=',')
         for row in file_lines:
-            if classes:
-                process_row_as_class(row, output_dict, important_info)
-            else:
-                process_row_as_race(row, output_dict, important_info)
+            method_of_processing(row, output_dict, important_info)
     return output_dict
 
 #################################################################################
@@ -305,7 +301,6 @@ def process_row_as_class(row, classes, important_info):
     else:
         class_object = add_class_to_dict_and_return(row, classes)
         populate_class_info(class_object, row)
-
 
     # When not adding subclasses, note we are in a base class
     if not important_info['add_subclass']:
@@ -397,6 +392,30 @@ def retrieve_stats(row):
             stats.append(int(row[index]))
         index += 1
     return stats
+
+#################################################################################
+# Background Functioms
+#################################################################################
+def process_row_as_background(row, backgrounds, important_info):
+    if important_info['first_row']:
+        important_info['first_row'] = False
+        return
+    
+    add_background_to_dict_and_return(row, backgrounds)
+
+def add_background_to_dict_and_return(row, backgrounds):
+    background_name = row[BACKGROUND_NAME]
+    background_skills = row[BACKGROUND_SKILLS]
+    background_languages = row[BACKGROUND_LANGUAGE]
+    background_tools = row[BACKGROUND_TOOLS]
+    background_source = row[BACKGROUND_SOURCE]
+
+    if background_name not in backgrounds:
+        races[background_name] = Background(background_name, background_skills, background_languages, background_tools, background_source)
+
+    return backgrounds[background_name]
+
+#################################################################################
 
 def add_rolled_choice_to_race_stats(choice, number, character):
     stat = STAT_ABBREVIATIONS[choice.lower()]
