@@ -137,12 +137,11 @@ class Class(object):
         ability_list = self.best_abilities.split(',')
         abilities = []
         if ability_list:
-            first_ability = self.best_abilities.split(',')[0].split('or')[0]
-            abilities += first_ability
+            ability = self.best_abilities.split(',')[0].split('or')[0]
+            abilities.append(ability.strip())
         if len(ability_list) > 1:
-            second_ability = self.best_abilities.split(',')[1]
-            abilities += second_ability
-
+            ability = self.best_abilities.split(',')[1]
+            abilities.append(ability.strip())
         return abilities
 
     def get_hitpoints(self):
@@ -405,13 +404,21 @@ def add_rolled_choice_to_race_stats(choice, number, character):
 
 def create_final_stats(rolled_stats, new_character, auto_assign=False):
     auto_idx = 0
+    best_idx = 0
     stats_assigned = {stat:0 for stat in STAT_NAMES}
+    stats = STAT_NAMES
+    best_abilities = new_character.class_object.get_best_abilities()
 
     for number in rolled_stats:
         if auto_assign:
-            # Can use best_abilities in classes here to set ideal stats
-            add_rolled_choice_to_race_stats(STAT_NAMES[auto_idx], number, new_character)
-            auto_idx+=1
+            if best_idx < len(best_abilities):
+                ability = best_abilities[best_idx].lower()
+                add_rolled_choice_to_race_stats(ability, number, new_character)
+                stats.remove(ability)
+                best_idx += 1
+            else:
+                add_rolled_choice_to_race_stats(stats[auto_idx], number, new_character)
+                auto_idx += 1
             continue
 
         while True:
@@ -461,7 +468,7 @@ def generate_x_characters(x, races, classes):
         print('##############################################')
 
 if __name__ == '__main__':
-    test = True
+    test = False
     auto_assign = True
 
     races = populate_races()
@@ -482,6 +489,7 @@ if __name__ == '__main__':
     print_base_character_info(new_character)
 
     rolled_stats = Dice_Roller().roll_ndx_y_times(4, 6, 7, True)
+    rolled_stats.sort(reverse=True)
 
     print('Current Stats: ' + str(new_character.get_stats()))
     print('Rolled numbers: ' + str(rolled_stats))
